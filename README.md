@@ -16,7 +16,6 @@ Perception, Planning, and Controls are the three main components of any autonomo
 
 ## Phase 0:
 In phase 0 we have started with high level design which is the UML and made activity diagram with classes which will be helpful in understanding the project process flow. The details regarding the phase 0 process and implementation are clearly explained through a video which can be accessed through this [link](https://drive.google.com/drive/folders/1tj4G0VvpHVoRTa6DeKy0NeDprOo1u-xy?usp=sharing)
-### The proposal document and Quad Chart can be found [here](../Human-Detector-And-Tracker/proposal%20documents/)
-### The Initial UML Diagrams are found [here](../Human-Detector-And-Tracker/UML%20diagrams/UML_1.pdf)
-### The Activity Diagram found [here](../Human-Detector-And-Tracker/UML%20diagrams/Activity_diagram.jpeg)
-
+### The proposal document and Quad Chart can be found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/main/proposal%20documents)
+### The Initial UML Diagrams are found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/main/UML%20diagrams/UML_1.pdf)
+### The Activity Diagram found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/main/UML%20diagrams/Activity_diagram.jpeg)
