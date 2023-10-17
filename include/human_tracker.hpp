@@ -22,7 +22,7 @@ namespace perception
         bool isInitialized;
 
         public:
-        void Initializa();
+        void Initialize();
 
         void update();
     };
