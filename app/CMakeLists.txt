@@ -5,6 +5,8 @@ add_executable(shell-app
   main.cpp
   human_detector.cpp
   human_tracker.cpp
+  my_robot.cpp
+  visualization.cpp
   )
 
 # Any include directories needed to build this target.
