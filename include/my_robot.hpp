@@ -1,3 +1,13 @@
+/**
+ * @file my_robot.hpp
+ * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
+ * @brief This program is used to start the camera or load the video and do all processing for the robot.
+ * @version 0.1
+ * @date 2023-10-17
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #ifndef __MY_ROBOT_H__
 #define __MY_ROBOT_H__
 #pragma once
