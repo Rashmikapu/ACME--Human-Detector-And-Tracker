@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(HumanDT)
 
+
 #
 # GoogleTest Setup
 # ref: https://google.github.io/googletest/quickstart-cmake.html
@@ -63,29 +64,10 @@ execute_process(COMMAND cmake -E create_symlink
                 "${PROJECT_BINARY_DIR}/compile_commands.json"
                 "${PROJECT_SOURCE_DIR}/compile_commands.json")
 
-#
-# c++ Boilerplate Starts Here
-# ref: https://cmake.org/cmake/help/latest/guide/tutorial/index.html
-# ref: https://iamsorush.com/posts/cpp-cmake-essential/
-#
-add_subdirectory(app)
-add_subdirectory(test)
-
-#Include the necessary libraries
-find_package(OpenCV REQUIRED)
-find_package(Eigen3)
-INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
-# create a target to build documentation
-doxygen_add_docs(docs           # target name
-  # List of files or directories
-  ${PROJECT_SOURCE_DIR}/app
-  ${PROJECT_SOURCE_DIR}/include
-  )
-
 # The Below Code is to setup for Coverage.
 option(WANT_COVERAGE "this option enable coverage" ON)
 if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
-  set(WANT_COVERAGE OFF)
+  set(WANT_COVERAGE ON)
 endif()
 
 if(WANT_COVERAGE)
@@ -101,6 +83,31 @@ if(WANT_COVERAGE)
 endif()
 
 
+#
+# c++ Boilerplate Starts Here
+# ref: https://cmake.org/cmake/help/latest/guide/tutorial/index.html
+# ref: https://iamsorush.com/posts/cpp-cmake-essential/
+#
+find_package(OpenCV REQUIRED)
+find_package(Eigen3)
+add_subdirectory(app)
+add_subdirectory(test)
+
+# list(APPEND CMAKE_PREFIX_PATH "/usr/local/lib/cmake/opencv4")
+
+#Include the necessary libraries
+
+INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
+INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
+# create a target to build documentation
+doxygen_add_docs(docs           # target name
+  # List of files or directories
+  ${PROJECT_SOURCE_DIR}/app
+  ${PROJECT_SOURCE_DIR}/include
+  )
+
+
+
 # create targets for building code coverage reports
 if(WANT_COVERAGE)
   # unit test coverage:
@@ -111,6 +118,10 @@ if(WANT_COVERAGE)
     EXECUTABLE ctest     # what to run insdie the build directory?
     EXCLUDE
       "app/main.cpp"     # Unit test does not run app, so don't analyze it
+      "app/human_detector.cpp"
+      "app/human_tracker.cpp"
+      "app/my_robot.cpp"
+      "app/visualization.cpp"
       "*gtest*"          # Don't analyze googleTest code
       "/usr/include/*"   # Don't analyze system headers
     )

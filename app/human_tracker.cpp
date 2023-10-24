@@ -1,11 +1,7 @@
 #include "../include/human_tracker.hpp"
 
-void perception::HumanTracker::Initialize()
-{
+perception::HumanTracker::HumanTracker() { isInitialized = false; }
 
-}
+void perception::HumanTracker::Initialize() {}
 
-void perception::HumanTracker::update()
- {
-    
- }
+void perception::HumanTracker::update() {}
