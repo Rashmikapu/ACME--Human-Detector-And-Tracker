@@ -16,9 +16,22 @@
 #include <iostream>
 
 namespace perception {
+/**
+ * @class Visualization
+ * @brief A utility class for displaying results and creating bounding boxes for visualization.
+ */
 class Visualization {
  public:
+  /**
+   * @brief Display the results
+   * 
+   */
   static void displayResults();
+
+   /**
+   * @brief Create Bounding box
+   * 
+   */
   static void createBoundingBox();
 };
 }  // namespace perception

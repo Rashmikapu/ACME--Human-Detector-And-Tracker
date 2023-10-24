@@ -16,15 +16,28 @@
 #include <iostream>
 
 namespace perception {
+/**
+ * @class HumanTracker
+ * @brief Class for tracking humans using computer vision-based tracking algorithms.
+ */
 class HumanTracker {
   // *cv2.Tracker tracker;
   bool isInitialized;
 
  public:
+  /**
+   * @brief Constructor for the HumanTracker class.
+   */
   HumanTracker();
   
+   /**
+   * @brief Creates and configures the tracking algorithm.
+   */
   void Initialize();
 
+  /**
+   * @brief Update the human tracking with the latest frame.
+   */
   void update();
 };
 }  // namespace perception

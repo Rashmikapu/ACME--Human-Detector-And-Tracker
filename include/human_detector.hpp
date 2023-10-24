@@ -24,6 +24,10 @@
 // using namespace std;
 // using namespace cv::dnn;
 namespace perception {
+/**
+ * @class HumanDetector
+ * @brief Class for detecting humans in images using YOLO (You Only Look Once) object detection.
+ */
 class HumanDetector {
   // net my_net;
   float input_height;
@@ -43,13 +47,35 @@ class HumanDetector {
   // cv::Mat frame;
 
  public:
+  /**
+   * @brief Constructor for the HumanDetector class.
+   */
   HumanDetector();
+
+  /**
+   * @brief Load the YOLO neural network model for object detection.
+   * @return The YOLO neural network model.
+   */
   cv::dnn::Net YoloModel();
 
+  /**
+   * @brief Preprocess the input image for object detection
+   * and use model to detect humans
+   * @param input Input image to be preprocessed.
+   * @param model YOLO model for object detection.
+   * @return A vector of preprocessed images.
+   */
   std::vector<cv::Mat> preProcess(cv::Mat &input, cv::dnn::Net &model);
 
+  /**
+   * @brief Postprocess the output of object detection.
+   * @param input Input image for detection.
+   * @param detections Vector of detection results.
+   * @return Processed image with bounding boxes and labels.
+   */
   cv::Mat postProcess(cv::Mat &input, std::vector<cv::Mat> &detections);
 };
 }  // namespace perception
 
 #endif
+

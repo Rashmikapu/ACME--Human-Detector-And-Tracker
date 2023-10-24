@@ -26,6 +26,10 @@
 // using namespace cv;
 
 namespace perception {
+/**
+ * @class MyRobot
+ * @brief Class representing a robot with the capability to perform human detection and tracking.
+ */
 class MyRobot {
   HumanDetector yolo;
   cv::dnn::Net net;
@@ -34,7 +38,14 @@ class MyRobot {
   std::vector<cv::Mat> detector;
 
  public:
+  /**
+   * @brief Constructor for the MyRobot class.
+   */
   MyRobot();
+
+  /**
+   * @brief Run the robot's operations, including human detection and tracking.
+   */
   void run();
 };
 }  // namespace perception
