@@ -12,23 +12,43 @@
 #ifndef __HUMAN_DETECTOR_H__
 #define __HUMAN_DETECTOR_H__
 #pragma once
-
+#include<opencv2/opencv.hpp>
+#include <fstream>
 #include <iostream>
+#include "opencv2/core/core.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
 
+// using namespace cv;
+// using namespace std;
+// using namespace cv::dnn;
 namespace perception 
 {
     class HumanDetector
     {
         // net my_net;
-        int input_height;
-        int input_width;
+        float input_height = 640.0;
+        float input_width = 640.0;
+        cv::dnn::Net net;
+        std::vector<std::string> class_list;
+        const float SCORE_THRESHOLD = 0.5;
+        const float NMS_THRESHOLD = 0.45;
+        const float CONFIDENCE_THRESHOLD = 0.45;
+        const float FONT_SCALE = 0.7;
+        const int FONT_FACE = cv::FONT_HERSHEY_SIMPLEX;
+        const int THICKNESS = 1;
+        cv::Scalar BLACK = cv::Scalar(0,0,0);
+        cv::Scalar BLUE = cv::Scalar(255, 178, 50);
+        cv::Scalar YELLOW = cv::Scalar(0, 255, 255);
+        cv::Scalar RED = cv::Scalar(0,0,255);
+        // cv::Mat frame;
 
         public:
-        void YoloModel();
+        cv::dnn::Net YoloModel();
 
-        void preProcess();
+        std::vector<cv::Mat> preProcess( cv::Mat &input, cv::dnn::Net &model);
 
-        void postProcess();
+        cv::Mat postProcess(cv::Mat &input, std::vector<cv::Mat> &detections);
     };
 }
 

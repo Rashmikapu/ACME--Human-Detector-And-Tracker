@@ -10,19 +10,28 @@
  */
 #ifndef __MY_ROBOT_H__
 #define __MY_ROBOT_H__
+#include <opencv2/dnn/dnn.hpp>
 #pragma once
 
 #include <iostream>
 #include "human_detector.hpp"
 #include "human_tracker.hpp"
+#include <opencv2/opencv.hpp>
+#include "opencv2/core/core.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+
+// using namespace cv;
 
 namespace perception 
 {
     class MyRobot
     {
         HumanDetector yolo;
+        cv::dnn::Net net;
         HumanTracker tracker;
-
+        std::vector<cv::Mat> detections;
+        std::vector<cv::Mat> detector;
         public:
         void run();
     };

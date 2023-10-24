@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(HumanDT)
 
+
 #
 # GoogleTest Setup
 # ref: https://google.github.io/googletest/quickstart-cmake.html
@@ -68,13 +69,17 @@ execute_process(COMMAND cmake -E create_symlink
 # ref: https://cmake.org/cmake/help/latest/guide/tutorial/index.html
 # ref: https://iamsorush.com/posts/cpp-cmake-essential/
 #
+find_package(OpenCV REQUIRED)
+find_package(Eigen3)
 add_subdirectory(app)
 add_subdirectory(test)
 
+# list(APPEND CMAKE_PREFIX_PATH "/usr/local/lib/cmake/opencv4")
+
 #Include the necessary libraries
-find_package(OpenCV REQUIRED)
-find_package(Eigen3)
+
 INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
+INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
 # create a target to build documentation
 doxygen_add_docs(docs           # target name
   # List of files or directories
