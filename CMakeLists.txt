@@ -64,6 +64,25 @@ execute_process(COMMAND cmake -E create_symlink
                 "${PROJECT_BINARY_DIR}/compile_commands.json"
                 "${PROJECT_SOURCE_DIR}/compile_commands.json")
 
+# The Below Code is to setup for Coverage.
+option(WANT_COVERAGE "this option enable coverage" ON)
+if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
+  set(WANT_COVERAGE ON)
+endif()
+
+if(WANT_COVERAGE)
+  message("Enabling coverage")
+  list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake-modules")
+  include(CodeCoverage)
+  # The following line come from cmake-modules/CodeCoverage.cmake
+  append_coverage_compiler_flags() # will add "--coverage" compilation flag
+  # Exclude certain directories from coverage analysis
+  set(COVERAGE_EXCLUDES
+    ${PROJECT_BINARY_DIR}
+    )
+endif()
+
+
 #
 # c++ Boilerplate Starts Here
 # ref: https://cmake.org/cmake/help/latest/guide/tutorial/index.html
@@ -87,23 +106,6 @@ doxygen_add_docs(docs           # target name
   ${PROJECT_SOURCE_DIR}/include
   )
 
-# The Below Code is to setup for Coverage.
-option(WANT_COVERAGE "this option enable coverage" ON)
-if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
-  set(WANT_COVERAGE OFF)
-endif()
-
-if(WANT_COVERAGE)
-  message("Enabling coverage")
-  list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake-modules")
-  include(CodeCoverage)
-  # The following line come from cmake-modules/CodeCoverage.cmake
-  append_coverage_compiler_flags() # will add "--coverage" compilation flag
-  # Exclude certain directories from coverage analysis
-  set(COVERAGE_EXCLUDES
-    ${PROJECT_BINARY_DIR}
-    )
-endif()
 
 
 # create targets for building code coverage reports
@@ -116,6 +118,10 @@ if(WANT_COVERAGE)
     EXECUTABLE ctest     # what to run insdie the build directory?
     EXCLUDE
       "app/main.cpp"     # Unit test does not run app, so don't analyze it
+      "app/human_detector.cpp"
+      "app/human_tracker.cpp"
+      "app/my_robot.cpp"
+      "app/visualization.cpp"
       "*gtest*"          # Don't analyze googleTest code
       "/usr/include/*"   # Don't analyze system headers
     )

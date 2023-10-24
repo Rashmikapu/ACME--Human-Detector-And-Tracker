@@ -1,0 +1,13 @@
+<map id="app/main.cpp" name="app/main.cpp">
+<area shape="rect" id="node1" title="The file contains the initialization of the robot." alt="" coords="395,5,505,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="773,229,853,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,229,79,256"/>
+<area shape="rect" id="node4" href="$human__detector_8hpp.html" title="This file contains the import of YOLO model and detecting humans." alt="" coords="231,155,450,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="103,229,258,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="283,229,452,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="476,229,685,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="938,229,1157,256"/>
+<area shape="rect" id="node9" href="$my__robot_8hpp.html" title="This program is used to start the camera or load the video and do all processing for the robot." alt="" coords="525,80,700,107"/>
+<area shape="rect" id="node10" title=" " alt="" coords="677,155,839,181"/>
+<area shape="rect" id="node11" href="$human__tracker_8hpp.html" title="This File contains the implementation of tracker algorithm with bounding box coordinates." alt="" coords="863,155,1010,181"/>
+</map>
