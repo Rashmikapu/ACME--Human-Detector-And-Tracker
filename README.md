@@ -19,3 +19,7 @@ In phase 0 we have started with high level design which is the UML and made acti
 ### The proposal document and Quad Chart can be found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/main/proposal%20documents)
 ### The Initial UML Diagrams are found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/main/UML%20diagrams/UML_1.pdf)
 ### The Activity Diagram found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/main/UML%20diagrams/Activity_diagram.jpeg)
+
+## Software Practices:
+1. [AIP Sheet](https://docs.google.com/spreadsheets/d/1X7TYjea1hpwSc7HJBIq0aZOqBp08vf4WFnDWF-Crw-c/edit?usp=sharing)
+2. [Sprint Meeting Notes](https://docs.google.com/document/d/1OUv6qRwsF3ackCCKdnR3cEuVyBTGkZl5UUJlMjFRr8Y/edit?usp=sharing)
