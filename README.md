@@ -19,7 +19,7 @@ To implement the module to detect and track humans below methodology is formulat
 ## Activity Diagram
 
 <p align="center">
-<img width="60%" alt="Activity Diagram" src="">
+<img width="60%" alt="Activity Diagram" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/Development1/Activity_diagram.jpeg">
 </p>
 
 ## Team 
@@ -31,7 +31,7 @@ To implement the module to detect and track humans below methodology is formulat
 ## Phase 0:
 In phase 0 we have started with high level design which is the UML and made activity diagram with classes which will be helpful in understanding the project process flow. The details regarding the phase 0 process and implementation are clearly explained through a video which can be accessed through this [link](https://drive.google.com/drive/folders/1tj4G0VvpHVoRTa6DeKy0NeDprOo1u-xy?usp=sharing)
 - The proposal document and Quad Chart can be found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/main/proposal%20documents)
-- The Initial UML Diagrams are found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/main/UML%20diagrams/UML_1.pdf)
+- The Initial UML Diagrams are found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/Development1/UML%20diagrams/Phase_0/UML_1.pdf)
 
 
 
@@ -39,7 +39,8 @@ In phase 0 we have started with high level design which is the UML and made acti
 
 In phase 1, a revised design diagrams is performed and stub implementation for all classes is written. Intial Unit tests are also written to check coverage. 
 
-- Please find the detailed explanation of process done and followed in this phase [here]()
+- Please find the detailed explanation of process done and followed in this phase [here](https://drive.google.com/drive/folders/1n930CRB0tD2ri-VusOJiBSfmxYP9eucS?usp=sharing)
+- The revise UML Diagram for phase 1 can be found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/Development1/UML%20diagrams/Phase_1/Revised_UML.pdf)
 
 
 #### Software Practices: 
