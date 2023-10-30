@@ -14,6 +14,7 @@
 #pragma once
 
 #include <iostream>
+#include<opencv2/opencv.hpp>
 
 namespace perception {
 /**
@@ -32,8 +33,10 @@ class Visualization {
    * @brief Create Bounding box
    * 
    */
-  static void createBoundingBox();
+  static void createBoundingBox(cv::Mat& input_image, std::string label, const int left,const int top, 
+  const int FONT_FACE, const float FONT_SCALE, const int THICKNESS, cv::Scalar YELLOW, cv::Scalar BLACK);
 };
 }  // namespace perception
 
 #endif
+ 

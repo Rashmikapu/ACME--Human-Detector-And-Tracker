@@ -15,7 +15,6 @@
 #include <fstream>
 #include <iostream>
 #include <opencv2/opencv.hpp>
-
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
@@ -34,6 +33,7 @@ class HumanDetector {
   float input_width;
   cv::dnn::Net net;
   std::vector<std::string> class_list;
+  public:
   const float SCORE_THRESHOLD = 0.5;
   const float NMS_THRESHOLD = 0.45;
   const float CONFIDENCE_THRESHOLD = 0.45;

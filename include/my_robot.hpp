@@ -35,7 +35,7 @@ class MyRobot {
   cv::dnn::Net net;
   HumanTracker tracker;
   std::vector<cv::Mat> detections;
-  std::vector<cv::Mat> detector;
+  cv::Mat detector;
 
  public:
   /**

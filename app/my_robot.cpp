@@ -1,5 +1,6 @@
 #include <../include/my_robot.hpp>
 
+#include <opencv2/highgui.hpp>
 #include <opencv2/opencv.hpp>
 
 #include <../include/human_detector.hpp>
@@ -8,22 +9,33 @@
 perception::MyRobot::MyRobot() {}
 
 void perception::MyRobot::run() {
-  net = yolo.YoloModel();
+  
+  
   cv::Mat frame = cv::imread(
-      "/home/rashmikapu/Desktop/808x/midterm/Human-Detector-And-Tracker/app/"
-      "sample.jpg");
+      "/home/rashmikapu/Desktop/808x/midterm/Human-Detector-And-Tracker/app/sample.jpeg");
+  if (frame.empty()) {
+        std::cerr << "Could not read the image." << std::endl;
+  }
+  net = yolo.YoloModel();
+  // cv::namedWindow("Image", cv::WINDOW_NORMAL);
+  // cv::imshow("Image",frame);
+  // cv::waitKey(0);
   cv::Mat new_frame = frame.clone();
   detections = yolo.preProcess(frame, net);
-  detector = yolo.postProcess(new_frame, detections);
-  tracker.Initialize();
-  tracker.update();
-  Visualization::displayResults();
-  Visualization::createBoundingBox();
-  //   std::vector<double> layersTimes;
-  // double freq = getTickFrequency() / 1000;
-  // double t = net.getPerfProfile(layersTimes) / freq;
-  // std::string label = cv::format("Inference time : %.2f ms", t);
-  // putText(img, label, Point(20, 40), FONT_FACE, FONT_SCALE, RED);
-
-  cv::imshow("Output", frame);
+  perception::Visualization::displayResults();
+  // std::cout<<"Worked";
+  // std::cout<<"detections:"<<std::endl<<detections[0];
+  cv::Mat detector = yolo.postProcess(frame, detections);
+  // tracker.Initialize();
+  // tracker.update();
+  // Visualization::displayResults();
+  // Visualization::createBoundingBox();
+  std::vector<double> layersTimes;
+  double freq = cv::getTickFrequency() / 1000;
+  double t = net.getPerfProfile(layersTimes) / freq;
+  std::string label = cv::format("Inference time : %.2f ms", t);
+  cv::putText(detector, label, cv::Point(20, 40), yolo.FONT_FACE, yolo.FONT_SCALE, yolo.RED);
+  cv::namedWindow("Output", cv::WINDOW_NORMAL);
+  cv::imshow("Output", detector);
+  cv::waitKey(0);
 }
