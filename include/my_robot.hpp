@@ -23,7 +23,6 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-// using namespace cv;
 
 namespace perception {
 /**
@@ -34,19 +33,25 @@ class MyRobot {
   HumanDetector yolo;
   cv::dnn::Net net;
   HumanTracker tracker;
-  // std::vector<cv::Mat> detections;
-  // cv::Mat detector;
 
+  cv::Mat K;
+  cv::Mat R;
+  cv::Mat T;
+
+  
  public:
   /**
    * @brief Constructor for the MyRobot class.
    */
   MyRobot();
+  MyRobot(cv::Mat my_K, cv::Mat my_R, cv::Mat my_T);
 
   /**
    * @brief Run the robot's operations, including human detection and tracking.
    */
   void run();
+  void RunOnImage();
+  void TransformToRobotFrame(std::vector<cv::Rect> &detected_objects,double* X, double* Y, double*Z);
 };
 }  // namespace perception
 
