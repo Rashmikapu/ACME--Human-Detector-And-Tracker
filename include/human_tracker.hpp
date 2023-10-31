@@ -12,8 +12,10 @@
 #ifndef __HUMAN_TRACKER_H__
 #define __HUMAN_TRACKER_H__
 #pragma once
-
+#include <opencv2/opencv.hpp>
+#include <opencv2/tracking.hpp>
 #include <iostream>
+#include <vector>
 
 namespace perception {
 /**
@@ -23,7 +25,7 @@ namespace perception {
 class HumanTracker {
   // *cv2.Tracker tracker;
   bool isInitialized;
-
+  cv::Ptr<cv::Tracker> csrt_tracker;
  public:
   /**
    * @brief Constructor for the HumanTracker class.
@@ -38,7 +40,7 @@ class HumanTracker {
   /**
    * @brief Update the human tracking with the latest frame.
    */
-  void update();
+  void update(std::vector<cv::Rect2d> bboxes, cv::Mat& input_image) ;
 };
 }  // namespace perception
 

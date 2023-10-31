@@ -2,9 +2,11 @@
 #include <../include/my_robot.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/opencv.hpp>
-
+#include <opencv2/tracking.hpp>
+#include <../include/human_tracker.hpp>
 #include <../include/human_detector.hpp>
 #include <../include/visualization.hpp>
+
 // using namespace cv;
 perception::MyRobot::MyRobot() {}
 
@@ -50,7 +52,9 @@ void perception::MyRobot::run() {
     perception::Visualization::createBoundingBox(indices, boxes, &bboxes, frame,
                                                  yolo.class_list, class_ids,
                                                  confidences);
-
+    perception::HumanTracker tracker_object;
+    tracker_object.Initialize();
+    tracker_object.update(bboxes,detector);
     perception::Visualization::displayResults(net, detector);
 
     if (cv::waitKey(25) == 27) // ESC key to exit
