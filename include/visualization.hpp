@@ -16,6 +16,7 @@
 #include <iostream>
 #include<opencv2/opencv.hpp>
 
+
 namespace perception {
 /**
  * @class Visualization
@@ -27,14 +28,13 @@ class Visualization {
    * @brief Display the results
    * 
    */
-  static void displayResults();
+  static void displayResults(cv::dnn::Net &net,cv::Mat &detector);
 
    /**
    * @brief Create Bounding box
    * 
    */
-  static void createBoundingBox(std::vector<int> indices,std::vector<cv::Rect> boxes, std::vector<cv::Rect2d> bboxes, cv::Mat& input_image,
-const int FONT_FACE, const float FONT_SCALE, const int THICKNESS, cv::Scalar YELLOW, cv::Scalar BLACK, cv::Scalar BLUE, std::vector<std::string> class_list,
+  static void createBoundingBox(std::vector<int> indices,std::vector<cv::Rect> boxes, std::vector<cv::Rect2d>* bboxes, cv::Mat& input_image,std::vector<std::string> class_list,
 std::vector<int> class_ids, std::vector<float> confidences);
 };
 }  // namespace perception

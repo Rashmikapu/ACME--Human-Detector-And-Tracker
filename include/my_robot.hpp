@@ -34,8 +34,8 @@ class MyRobot {
   HumanDetector yolo;
   cv::dnn::Net net;
   HumanTracker tracker;
-  std::vector<cv::Mat> detections;
-  cv::Mat detector;
+  // std::vector<cv::Mat> detections;
+  // cv::Mat detector;
 
  public:
   /**
