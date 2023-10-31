@@ -1,10 +1,16 @@
 #include <../include/human_detector.hpp>
-#include <../include/visualization.hpp>
+
+#include <opencv2/core/cvstd_wrapper.hpp>
+
 #include <fstream>
+#include <opencv2/core/check.hpp>
+#include <opencv2/core/types.hpp>
 #include <opencv2/opencv.hpp>
 #include <../include/my_robot.hpp>
 
 #include <opencv2/highgui.hpp>
+#include <opencv2/tracking.hpp>
+#include <../include/visualization.hpp>
 
 perception::HumanDetector::HumanDetector() {
   input_height = 640.0;
@@ -29,8 +35,8 @@ cv::dnn::Net perception::HumanDetector::YoloModel() {
 std::vector<cv::Mat> perception::HumanDetector::preProcess(
     cv::Mat &input, cv::dnn::Net &model) {
   cv::Mat blob;  // Create a matrix called blob
-  std::cout << "Input dimensions: " << input.size() << std::endl;
-  std::cout << "Input data type: " << input.type() << std::endl;
+  // std::cout << "Input dimensions: " << input.size() << std::endl;
+  // std::cout << "Input data type: " << cv::typeToString(input.type()) << std::endl;
 
   // Size is to represent the desired image blob size
   // Scalar() is for mean subtraction
@@ -91,8 +97,6 @@ cv::Mat perception::HumanDetector::postProcess(
           if (max_class_score > SCORE_THRESHOLD)
           {
               // Store class ID and confidence in the pre-defined respective
-              
-              std::cout<<"inside max class if";
               confidences.push_back(confidence);
               class_ids.push_back(class_id.x);
 
@@ -121,45 +125,22 @@ cv::Mat perception::HumanDetector::postProcess(
   cv::dnn::NMSBoxes(boxes, confidences, SCORE_THRESHOLD, NMS_THRESHOLD, indices); 
   // std::cout<<"Indices :"<<indices.size();
   // std::cout<<"No.of humans:"<<boxes.size();
-  for (int i = 0; i < indices.size(); i++)
-  {
-      int idx = indices[i];
-      cv::Rect box = boxes[idx];
-
-      int left = box.x;
-      int top = box.y;
-      int width = box.width;
-      int height = box.height;
-      // Draw bounding box.
-      cv::rectangle(input_image, cv::Point(left, top), cv::Point(left + width,
-      top + height), BLUE, 3*THICKNESS);
-
-      // Get the label for the class name and its confidence.
-      std::string label = cv::format("%.2f", confidences[idx]);
-      label = class_list[class_ids[idx]] + ":" + label;
-      int baseLine;
-      cv::Size label_size = cv::getTextSize(label, FONT_FACE, FONT_SCALE,
-      THICKNESS, &baseLine);
-      top = std::max(top, label_size.height);
-  // Top left corner.
-      cv::Point tlc = cv::Point(left, top);
-  // Bottom right corner.
-      cv::Point brc = cv::Point(left + label_size.width, top +
-      label_size.height + baseLine);
-  // Draw black rectangle.
-      cv::rectangle(input_image, tlc, brc, BLACK, cv::FILLED);
-  // Put the label on the black rectangle.
-      cv::putText(input_image, label, cv::Point(left, top +
-      label_size.height), FONT_FACE, FONT_SCALE, YELLOW, THICKNESS);
+  cv::Ptr<cv::Tracker> csrt_tracker = cv::TrackerCSRT::create();
+  std::vector<cv::Rect2d> bboxes;
   
-  // cv::Mat m1 = cv::Mat::zeros(1, 1, CV_64F);
-  // return m1;
+    
+  perception::Visualization::createBoundingBox(indices, boxes, bboxes, input_image,FONT_FACE, FONT_SCALE, THICKNESS,YELLOW,
+   BLACK, BLUE, class_list, class_ids, confidences);
+  // for (cv::Rect2d& current_box : bboxes){
+  //     cv::Rect current_rect(current_box.x, current_box.y, current_box.width, current_box.height);
+  //     if (!current_rect.empty()){
+  //       csrt_tracker->update(input_image, current_rect);
+  //       cv::rectangle(input_image, current_rect, BLACK, 2);}
+  // }
   
-    // perception::Visualization::displayResults();
-    // perception::Visualization::createBoundingBox(input_image,label,left,top,FONT_FACE, FONT_SCALE, THICKNESS,YELLOW, BLACK);
+  
+
+  return input_image;
+
+  
   }
-  //  perception::Visualization::displayResults();
-   cv::imshow("POSTPROCESS", input_image);
-   cv::waitKey(0);
-   return input_image;
-    }

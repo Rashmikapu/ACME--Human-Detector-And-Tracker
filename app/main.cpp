@@ -25,6 +25,10 @@
 
 int main() {
   perception::MyRobot my_robot;
+  cv::Mat input_image = cv::Mat::zeros(1, 1, CV_64F);
+  cv::Mat frame = cv::imread(
+      "/home/rashmikapu/Desktop/808x/midterm/Human-Detector-And-Tracker/app/sample.jpeg");
+  std::vector<cv::Mat> detections(10, cv::Mat());
   my_robot.run();
   return 0;
 }

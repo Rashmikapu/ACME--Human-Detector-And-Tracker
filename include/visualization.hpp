@@ -33,8 +33,9 @@ class Visualization {
    * @brief Create Bounding box
    * 
    */
-  static void createBoundingBox(cv::Mat& input_image, std::string label, const int left,const int top, 
-  const int FONT_FACE, const float FONT_SCALE, const int THICKNESS, cv::Scalar YELLOW, cv::Scalar BLACK);
+  static void createBoundingBox(std::vector<int> indices,std::vector<cv::Rect> boxes, std::vector<cv::Rect2d> bboxes, cv::Mat& input_image,
+const int FONT_FACE, const float FONT_SCALE, const int THICKNESS, cv::Scalar YELLOW, cv::Scalar BLACK, cv::Scalar BLUE, std::vector<std::string> class_list,
+std::vector<int> class_ids, std::vector<float> confidences);
 };
 }  // namespace perception
 

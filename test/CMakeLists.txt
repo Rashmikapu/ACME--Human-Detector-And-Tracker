@@ -4,6 +4,8 @@ add_executable(cpp-test
   main.cpp
   test.cpp
   ../app/human_detector.cpp
+  ../app/visualization.cpp
+  
   )
 
 # Any include directories needed to build this target.

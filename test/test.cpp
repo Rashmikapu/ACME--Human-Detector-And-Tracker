@@ -1,7 +1,12 @@
 #include <gtest/gtest.h>
 
 #include <../include/human_detector.hpp>
+#include <iostream>
 #include <opencv2/opencv.hpp>
+
+
+  cv::Mat image = cv::imread(
+      "/home/rashmikapu/Desktop/808x/midterm/Human-Detector-And-Tracker/app/sample.jpeg");
 
 // TEST(dummy_test, this_should_pass) {
 //   EXPECT_EQ(1, 1);
@@ -15,20 +20,14 @@
 //   EXPECT_FLOAT_EQ(my_function2(3.2), 3.2);
 // }
 
-// perception::HumanDetector my_detector;
-// cv::Mat input_image = cv::Mat::zeros(1, 1, CV_64F);
-// std::vector<cv::Mat> detections(10, cv::Mat());
-// // detections.append(input_image);
-
-// // EXPECT_EQ(my_detector.postProcess(input_image,detections),cv::Mat::zeros(1,
-// // 1, CV_64F));
-
-// cv::Mat expectedMat = cv::Mat::zeros(1, 1, CV_64F);
-// cv::Mat resultMat = my_detector.postProcess(input_image, detections);
-
+perception::HumanDetector my_detector;
+cv::dnn::Net net = my_detector.YoloModel();
+std::vector<cv::Mat> det = my_detector.preProcess(image, net);
+// TEST(modeltest, this_is_to_test_yoloModel_function) { EXPECT_FALSE(net.empty()); }
 // // Use cv::Mat::operator== to check if the two Mats are equal.
-// TEST(preprocess_test, this_will_pass) { EXPECT_FALSE(detections.empty()); }
+// TEST(preprocess_test, this_is_to_test_preprocessing) { EXPECT_FALSE(my_detector.preProcess(image, net).empty()); }
 
-// TEST(postprocess_test, this_will_pass) {
-//   EXPECT_EQ(cv::countNonZero(resultMat != expectedMat), 0);
+// // cv::Mat detector = my_detector.postProcess(image, det);
+// TEST(postprocess_test, this_is_to_test_postprocessing) {
+//   EXPECT_EQ(my_detector.postProcess(image, det).type(), image.type());
 // }
