@@ -24,7 +24,7 @@ detections. This problem is planned to be mitigated by development of an accurat
 ## Activity Diagram
 
 <p align="center">
-<img width="60%" alt="Activity Diagram" src="">
+<img width="60%" alt="Activity Diagram" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/dev2/UML_Final_Activity.png">
 </p>
 
 ## Team 
@@ -44,8 +44,8 @@ In phase 0 we have started with high level design which is the UML and made acti
 
 In phase 1, a revised design diagrams is performed and stub implementation for all classes is written. Intial Unit tests are also written to check coverage. 
 
-- Please find the detailed explanation of process done and followed in this phase [here]()
-- Please find the revised UML diagrams [here]()
+- Please find the detailed explanation of process done and followed in this phase [here](https://drive.google.com/drive/folders/1n930CRB0tD2ri-VusOJiBSfmxYP9eucS?usp=sharing)
+- Please find the revised UML diagrams [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/dev2/UML%20diagrams/Phase_1)
 
 #### Software Practices: 
 The phase is implemented using Agile Iterative Process with a 1 week sprint and also following pair programming. Please find the links below for detailed tasks:
@@ -57,7 +57,7 @@ The phase is implemented using Agile Iterative Process with a 1 week sprint and 
 In phase 2, the human detector and tracker methods are implemented. After the implementation, in each frame of live video feed the bounding boxes around humans are created and these coordinates are updated in tracker object. The coordinates are then used to transform to robot frame 
 
 - Please find the detailed explanation of process done and followed in this phase [here](https://drive.google.com/drive/folders/1vQIMDPXyxOOZ3BJF7Ph4QrlXAWKc9Fms?usp=sharing)
-- Please find the revised UML diagrams [here]()
+- Please find the revised UML diagrams [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/dev2/UML%20diagrams/Phase_2)
 
 
 #### Software Practices: 
@@ -73,7 +73,7 @@ The phase is implemented using Agile Iterative Process with a 1 week sprint and 
 - Detailed Doxygen Documentation
 - Cpplint and Cppcheck error optimisation
 ## Results
-
+![Final Result](./images/github-logo.gif)
 
 ## Dependencies Installation
 The project requires opencv library installation. Follow the below procedure to install opencv libraries
