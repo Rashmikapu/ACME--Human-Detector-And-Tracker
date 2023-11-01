@@ -1,6 +1,6 @@
 # Human Detector And Tracker
 
-[![Coverage Report](https://codecov.io/gh/vinay06vinay/Human-Detector-And-Tracker/branch/dev2/graph/badge.svg)](https://codecov.io/gh/vinay06vinay/Human-Detector-And-Tracker) 
+[![Coverage Report](https://codecov.io/gh/vinay06vinay/Human-Detector-And-Tracker/branch/main/graph/badge.svg)](https://codecov.io/gh/vinay06vinay/Human-Detector-And-Tracker) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/vinay06vinay/Human-Detector-And-Tracker/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/vinay06vinay/Human-Detector-And-Tracker/actions/workflows/run-unit-test-and-upload-codecov.yml)
 
@@ -19,8 +19,7 @@ To implement the module to detect and track humans below methodology is formulat
 - Real-Time Processing Delays: The risk of real-time processing delays with YOLOv5 due to limited robot hardware
 can be mitigated by optimizing the model's size, using quantization, and choosing appropriate hardware components
 for real-time performance.
-- Accurate Tracking: The accurate tracking of humans and id tagging fails mostly in case of occlusion and multiple
-detections. This problem is planned to be mitigated by development of an accurate tracking algorithm.
+
 ## Activity Diagram
 
 <p align="center">
@@ -35,8 +34,8 @@ detections. This problem is planned to be mitigated by development of an accurat
 
 ## Phase 0:
 In phase 0 we have started with high level design which is the UML and made activity diagram with classes which will be helpful in understanding the project process flow. The details regarding the phase 0 process and implementation are clearly explained through a video which can be accessed through this [link](https://drive.google.com/drive/folders/1tj4G0VvpHVoRTa6DeKy0NeDprOo1u-xy?usp=sharing)
-- The proposal document and Quad Chart can be found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/main/proposal%20documents)
-- The Initial UML Diagrams are found [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/main/UML%20diagrams/UML_1.pdf)
+- The proposal document and Quad Chart can be found [here](/proposal%20documents)
+- The Initial UML Diagrams are found [here](/UML%20diagrams/Phase_0/UML_1.pdf)
 
 
 
@@ -45,7 +44,7 @@ In phase 0 we have started with high level design which is the UML and made acti
 In phase 1, a revised design diagrams is performed and stub implementation for all classes is written. Intial Unit tests are also written to check coverage. 
 
 - Please find the detailed explanation of process done and followed in this phase [here](https://drive.google.com/drive/folders/1n930CRB0tD2ri-VusOJiBSfmxYP9eucS?usp=sharing)
-- Please find the revised UML diagrams [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/dev2/UML%20diagrams/Phase_1)
+- Please find the revised UML diagrams [here](/UML%20diagrams/Phase_1/Revised_UML.pdf)
 
 #### Software Practices: 
 The phase is implemented using Agile Iterative Process with a 1 week sprint and also following pair programming. Please find the links below for detailed tasks:
@@ -57,7 +56,7 @@ The phase is implemented using Agile Iterative Process with a 1 week sprint and 
 In phase 2, the human detector and tracker methods are implemented. After the implementation, in each frame of live video feed the bounding boxes around humans are created and these coordinates are updated in tracker object. The coordinates are then used to transform to robot frame 
 
 - Please find the detailed explanation of process done and followed in this phase [here](https://drive.google.com/drive/folders/1vQIMDPXyxOOZ3BJF7Ph4QrlXAWKc9Fms?usp=sharing)
-- Please find the revised UML diagrams [here](https://github.com/vinay06vinay/Human-Detector-And-Tracker/tree/dev2/UML%20diagrams/Phase_2)
+- Please find the revised UML diagrams [here](/UML%20diagrams/Phase_2/Revised_UML_Diagram.pdf)
 
 
 #### Software Practices: 
@@ -122,7 +121,12 @@ The project requires opencv library installation. Follow the below procedure to 
 ```
 
 ## Code Build Procedure
-
+Follow the below procedure to download the code and start building
+```bash
+git clone https://github.com/vinay06vinay/Human-Detector-And-Tracker.git
+# Go to the directory where the folder is downloaded
+cd Human-Detector-And-Tracker
+```
 Follow the below procedure to build the code after cloning the repository
 ```bash
     # Configure the project and generate a native build system:
