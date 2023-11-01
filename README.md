@@ -73,7 +73,10 @@ The phase is implemented using Agile Iterative Process with a 1 week sprint and 
 - Detailed Doxygen Documentation
 - Cpplint and Cppcheck error optimisation
 ## Results
-![Final Result](./images/github-logo.gif)
+
+<p align="center">
+<img width="50%" alt="Activity Diagram" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/dev2/results/result_video.gif">
+</p>
 
 ## Dependencies Installation
 The project requires opencv library installation. Follow the below procedure to install opencv libraries
