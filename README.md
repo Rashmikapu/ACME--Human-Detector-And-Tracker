@@ -15,7 +15,12 @@ To implement the module to detect and track humans below methodology is formulat
 2. Based on the bounding box coordinates retrieved for each human, draw a bounding box around the human.
 3. Track each human with a unique id and location of human using tracking methods such as CSRT/SORT
 4. Transform the coordinates of human to robot or world coordinate frame. The highlevel methodology can also be found in activity diagram below
-
+## Potential Risks
+- Real-Time Processing Delays: The risk of real-time processing delays with YOLOv5 due to limited robot hardware
+can be mitigated by optimizing the model's size, using quantization, and choosing appropriate hardware components
+for real-time performance.
+- Accurate Tracking: The accurate tracking of humans and id tagging fails mostly in case of occlusion and multiple
+detections. This problem is planned to be mitigated by development of an accurate tracking algorithm.
 ## Activity Diagram
 
 <p align="center">
@@ -40,12 +45,35 @@ In phase 0 we have started with high level design which is the UML and made acti
 In phase 1, a revised design diagrams is performed and stub implementation for all classes is written. Intial Unit tests are also written to check coverage. 
 
 - Please find the detailed explanation of process done and followed in this phase [here]()
-
+- Please find the revised UML diagrams [here]()
 
 #### Software Practices: 
 The phase is implemented using Agile Iterative Process with a 1 week sprint and also following pair programming. Please find the links below for detailed tasks:
 1. [AIP Sheet](https://docs.google.com/spreadsheets/d/1X7TYjea1hpwSc7HJBIq0aZOqBp08vf4WFnDWF-Crw-c/edit?usp=sharing)
 2. [Sprint Meeting Notes](https://docs.google.com/document/d/1OUv6qRwsF3ackCCKdnR3cEuVyBTGkZl5UUJlMjFRr8Y/edit?usp=sharing)
+
+## Phase 2:
+
+In phase 2, the human detector and tracker methods are implemented. After the implementation, in each frame of live video feed the bounding boxes around humans are created and these coordinates are updated in tracker object. The coordinates are then used to transform to robot frame 
+
+- Please find the detailed explanation of process done and followed in this phase [here](https://drive.google.com/drive/folders/1vQIMDPXyxOOZ3BJF7Ph4QrlXAWKc9Fms?usp=sharing)
+- Please find the revised UML diagrams [here]()
+
+
+#### Software Practices: 
+The phase is implemented using Agile Iterative Process with a 1 week sprint and also following pair programming. Please find the links below for detailed tasks:
+1. [AIP Sheet](https://docs.google.com/spreadsheets/d/1X7TYjea1hpwSc7HJBIq0aZOqBp08vf4WFnDWF-Crw-c/edit?usp=sharing)
+2. [Sprint Meeting Notes](https://docs.google.com/document/d/12YnMYfqFnHpBiTkeQgLriqJWFdNAM0uL2CK9f5XtpoE/edit?usp=sharing)
+
+## Delivarables
+- Project: Human Detector and Tracker
+- Overview of prosposed work, including timeline, results
+- UML and class activity diagrams
+- Code Coverage using CodeCov
+- Detailed Doxygen Documentation
+- Cpplint and Cppcheck error optimisation
+## Results
+
 
 ## Dependencies Installation
 The project requires opencv library installation. Follow the below procedure to install opencv libraries
@@ -53,11 +81,34 @@ The project requires opencv library installation. Follow the below procedure to 
 ```bash
     # Install minimal prerequisites (Ubuntu 20.04 as reference)
     sudo apt update && sudo apt install -y cmake g++ wget unzip
-    # Download and unpack sources
-    wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
-    wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.x.zip
-    unzip opencv.zip
-    unzip opencv_contrib.zip
+    git clone https://github.com/opencv/opencv.git
+    cd opencv 
+    git checkout 4.5.0
+    cd ..
+    git clone https://github.com/opencv/opencv_contrib.git
+    cd opencv_contrib
+    git checkout 4.5.0
+    cd ..
+    cd opencv
+    mkdir build
+    cd build
+    cmake -D CMAKE_BUILD_TYPE=RELEASE \
+            -D BUILD_EXAMPLES=OFF \
+            -D BUILD_opencv_apps=OFF \
+            -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+            -D BUILD_DOCS=OFF \
+            -D BUILD_PERF_TESTS=OFF \
+            -D BUILD_TESTS=OFF \
+            -D WITH_CUDA=OFF \
+            -D CMAKE_INSTALL_PREFIX=/usr/local ..
+            
+    make 
+    sudo make install
+    sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
+    sudo ldconfig
+
+    # Install Eigen library
+    sudo apt install libeigen3-dev
 ```
 
 ## Code Build Procedure
