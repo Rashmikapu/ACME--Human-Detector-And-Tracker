@@ -73,31 +73,33 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef __HUMAN_TRACKER_H__</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define __HUMAN_TRACKER_H__</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceperception.html">perception</a> {</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classperception_1_1HumanTracker.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classperception_1_1HumanTracker.html">HumanTracker</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="comment">// *cv2.Tracker tracker;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classperception_1_1HumanTracker.html#a8bbdbb16a7be3214145cc39a90d2dd81">   25</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classperception_1_1HumanTracker.html#a8bbdbb16a7be3214145cc39a90d2dd81">isInitialized</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="classperception_1_1HumanTracker.html#a7faf5909681beb2acb2b0a181fab33d0">HumanTracker</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classperception_1_1HumanTracker.html#a6fd3ada0305a2451abf70e98cc7680c4">Initialize</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classperception_1_1HumanTracker.html#a07302cae38fb23225567d6f3c6558534">update</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}  <span class="comment">// namespace perception</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;opencv2/tracking.hpp&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceperception.html">perception</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classperception_1_1HumanTracker.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classperception_1_1HumanTracker.html">HumanTracker</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classperception_1_1HumanTracker.html#a8bbdbb16a7be3214145cc39a90d2dd81">   26</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classperception_1_1HumanTracker.html#a8bbdbb16a7be3214145cc39a90d2dd81">isInitialized</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classperception_1_1HumanTracker.html#aefd36b1e65bc80e6e204e806a47e8034">   27</a></span>&#160;  cv::Ptr&lt;cv::Tracker&gt; <a class="code" href="classperception_1_1HumanTracker.html#aefd36b1e65bc80e6e204e806a47e8034">csrt_tracker</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classperception_1_1HumanTracker.html#a7faf5909681beb2acb2b0a181fab33d0">HumanTracker</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classperception_1_1HumanTracker.html#a6fd3ada0305a2451abf70e98cc7680c4">Initialize</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classperception_1_1HumanTracker.html#a110afa8d5652b9eb544945666b1c4f86">update</a>(std::vector&lt;cv::Rect2d&gt; bboxes, cv::Mat&amp; input_image) ;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}  <span class="comment">// namespace perception</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassperception_1_1HumanTracker_html_a7faf5909681beb2acb2b0a181fab33d0"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a7faf5909681beb2acb2b0a181fab33d0">perception::HumanTracker::HumanTracker</a></div><div class="ttdeci">HumanTracker()</div><div class="ttdoc">Constructor for the HumanTracker class.</div><div class="ttdef"><b>Definition:</b> human_tracker.cpp:3</div></div>
-<div class="ttc" id="aclassperception_1_1HumanTracker_html_a6fd3ada0305a2451abf70e98cc7680c4"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a6fd3ada0305a2451abf70e98cc7680c4">perception::HumanTracker::Initialize</a></div><div class="ttdeci">void Initialize()</div><div class="ttdoc">Creates and configures the tracking algorithm.</div><div class="ttdef"><b>Definition:</b> human_tracker.cpp:5</div></div>
-<div class="ttc" id="aclassperception_1_1HumanTracker_html_a07302cae38fb23225567d6f3c6558534"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a07302cae38fb23225567d6f3c6558534">perception::HumanTracker::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Update the human tracking with the latest frame.</div><div class="ttdef"><b>Definition:</b> human_tracker.cpp:7</div></div>
-<div class="ttc" id="aclassperception_1_1HumanTracker_html"><div class="ttname"><a href="classperception_1_1HumanTracker.html">perception::HumanTracker</a></div><div class="ttdoc">Class for tracking humans using computer vision-based tracking algorithms.</div><div class="ttdef"><b>Definition:</b> human_tracker.hpp:23</div></div>
-<div class="ttc" id="anamespaceperception_html"><div class="ttname"><a href="namespaceperception.html">perception</a></div><div class="ttdef"><b>Definition:</b> human_detector.hpp:26</div></div>
-<div class="ttc" id="aclassperception_1_1HumanTracker_html_a8bbdbb16a7be3214145cc39a90d2dd81"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a8bbdbb16a7be3214145cc39a90d2dd81">perception::HumanTracker::isInitialized</a></div><div class="ttdeci">bool isInitialized</div><div class="ttdef"><b>Definition:</b> human_tracker.hpp:25</div></div>
+<div class="ttc" id="aclassperception_1_1HumanTracker_html_a7faf5909681beb2acb2b0a181fab33d0"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a7faf5909681beb2acb2b0a181fab33d0">perception::HumanTracker::HumanTracker</a></div><div class="ttdeci">HumanTracker()</div><div class="ttdoc">Default constructor for the HumanTracker class.</div><div class="ttdef"><b>Definition:</b> human_tracker.cpp:14</div></div>
+<div class="ttc" id="aclassperception_1_1HumanTracker_html_a6fd3ada0305a2451abf70e98cc7680c4"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a6fd3ada0305a2451abf70e98cc7680c4">perception::HumanTracker::Initialize</a></div><div class="ttdeci">void Initialize()</div><div class="ttdoc">Creates and configures the tracking algorithm.</div><div class="ttdef"><b>Definition:</b> human_tracker.cpp:16</div></div>
+<div class="ttc" id="aclassperception_1_1HumanTracker_html_a110afa8d5652b9eb544945666b1c4f86"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a110afa8d5652b9eb544945666b1c4f86">perception::HumanTracker::update</a></div><div class="ttdeci">void update(std::vector&lt; cv::Rect2d &gt; bboxes, cv::Mat &amp;input_image)</div><div class="ttdoc">Update the human tracking with the latest frame.</div><div class="ttdef"><b>Definition:</b> human_tracker.cpp:20</div></div>
+<div class="ttc" id="aclassperception_1_1HumanTracker_html"><div class="ttname"><a href="classperception_1_1HumanTracker.html">perception::HumanTracker</a></div><div class="ttdoc">Class for tracking humans using computer vision-based tracking algorithms.</div><div class="ttdef"><b>Definition:</b> human_tracker.hpp:25</div></div>
+<div class="ttc" id="aclassperception_1_1HumanTracker_html_aefd36b1e65bc80e6e204e806a47e8034"><div class="ttname"><a href="classperception_1_1HumanTracker.html#aefd36b1e65bc80e6e204e806a47e8034">perception::HumanTracker::csrt_tracker</a></div><div class="ttdeci">cv::Ptr&lt; cv::Tracker &gt; csrt_tracker</div><div class="ttdef"><b>Definition:</b> human_tracker.hpp:27</div></div>
+<div class="ttc" id="anamespaceperception_html"><div class="ttname"><a href="namespaceperception.html">perception</a></div><div class="ttdef"><b>Definition:</b> human_detector.hpp:23</div></div>
+<div class="ttc" id="aclassperception_1_1HumanTracker_html_a8bbdbb16a7be3214145cc39a90d2dd81"><div class="ttname"><a href="classperception_1_1HumanTracker.html#a8bbdbb16a7be3214145cc39a90d2dd81">perception::HumanTracker::isInitialized</a></div><div class="ttdeci">bool isInitialized</div><div class="ttdef"><b>Definition:</b> human_tracker.hpp:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

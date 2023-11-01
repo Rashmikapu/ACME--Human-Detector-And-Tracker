@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yolomodel_67',['YoloModel',['../classperception_1_1HumanDetector.html#ad9c255db9eb625d61b28712a93a5ffab',1,'perception::HumanDetector']]]
+  ['update_74',['update',['../classperception_1_1HumanTracker.html#a110afa8d5652b9eb544945666b1c4f86',1,'perception::HumanTracker']]]
 ];

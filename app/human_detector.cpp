@@ -1,31 +1,42 @@
-#include "../include/human_detector.hpp"
-
+/**
+ * @file human_detector.cpp
+ * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
+ * @brief This file contains the implementation of HumanDetector class
+ * @version 0.1
+ * @date 2023-10-31
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+#include <../include/human_detector.hpp>
 #include <fstream>
+#include <opencv2/core/check.hpp>
+#include <opencv2/core/cvstd_wrapper.hpp>
+#include <opencv2/core/types.hpp>
+#include <opencv2/highgui.hpp>
 #include <opencv2/opencv.hpp>
+#include <opencv2/tracking.hpp>
+#include <../include/my_macros.hpp>
+#include <../include/my_robot.hpp>
+#include <../include/visualization.hpp>
+
+
+
 perception::HumanDetector::HumanDetector() {
   input_height = 640.0;
   input_width = 640.0;
 }
-cv::dnn::Net perception::HumanDetector::YoloModel() {
-  // std::vector<std::string> class_list;
-  // frame = frame1;
-  // class_list.push_back("person");
-  // vector<string> class_list;
-  std::ifstream ifs("coco.names");
-  std::string line;
 
-  while (getline(ifs, line)) {
-    class_list.push_back(line);
-  }
-  net = cv::dnn::readNet(
-      "/home/rashmikapu/Desktop/808x/midterm/Human-Detector-And-Tracker/app/"
-      "models/yolov5s.onnx");
+cv::dnn::Net perception::HumanDetector::YoloModel(std::string &model_path) {
+  class_list.push_back("person");
+  net = cv::dnn::readNet(model_path);
   return net;
 }
 
 std::vector<cv::Mat> perception::HumanDetector::preProcess(
     cv::Mat &input, cv::dnn::Net &model) {
-  cv::Mat blob;  // Create a matrix called blob
+  // Create a matrix called blob
+  cv::Mat blob;
 
   // Size is to represent the desired image blob size
   // Scalar() is for mean subtraction
@@ -36,108 +47,73 @@ std::vector<cv::Mat> perception::HumanDetector::preProcess(
   cv::dnn::blobFromImage(input, blob, 1.0 / 255.0,
                          cv::Size(input_width, input_height), cv::Scalar(),
                          true, false);
+
+  model.setInput(blob);
   std::vector<cv::Mat> outputs;
+
   model.forward(outputs, model.getUnconnectedOutLayersNames());
 
-  // return outputs;
-  std::vector<cv::Mat> detections(10, cv::Mat());
-  return detections;
+  return outputs;
 }
 
-cv::Mat perception::HumanDetector::postProcess(
-    cv::Mat &input_image, std::vector<cv::Mat> &detections) {
-  // std::vector<int> class_ids;
-  // std::vector<float> confidences;
-  // std::vector<cv::Rect> boxes;
+cv::Mat perception::HumanDetector::postProcess(const cv::Mat &input_image,
+                                               const std::vector<cv::Mat>
+                                               &detections,
+                                               std::vector<int> *class_ids,
+                                               std::vector<float> *confidences,
+                                               std::vector<cv::Rect> *boxes,
+                                               std::vector<int> *indices) {
+  float x_factor = input_image.cols / input_width;
+  float y_factor = input_image.rows / input_height;
 
-  // // Resizing factor.
-  // float x_factor = input_image.cols / input_width;
-  // float y_factor = input_image.rows / input_height;
+  float* data = reinterpret_cast<float*>(detections[0].data);
+  // const int dimensions; // = 85;
+  const int rows = 25200;
 
-  // float *data = (float *)detections[0].data;
+  // Iterate through 25200 detections.
+  for (int i = 0; i < rows; ++i) {
+    float confidence = data[4];
+    // Discard bad detections and continue.
+    if (confidence >= CONFIDENCE_THRESHOLD) {
+      float *classes_scores = data + 5;
 
-  // const int dimensions = 85;
-  // const int rows = 25200;
-  // // Iterate through 25200 detections.
-  // for (int i = 0; i < rows; ++i)
-  // {
-  //     float confidence = data[4];
-  //     // Discard bad detections and continue.
-  //     if (confidence >= CONFIDENCE_THRESHOLD)
-  //     {
-  //         float * classes_scores = data + 5;
-  //         // Create a 1x85 Mat and store class scores of 80 classes.
-  //         cv::Mat scores(1, class_list.size(), CV_32FC1, classes_scores);
-  //         // Perform minMaxLoc and acquire index of best class score.
-  //         cv::Point class_id;
-  //         double max_class_score;
-  //         minMaxLoc(scores, 0, &max_class_score, 0, &class_id);
-  //         // Continue if the class score is above the threshold.
-  //         if (max_class_score > SCORE_THRESHOLD)
-  //         {
-  //             // Store class ID and confidence in the pre-defined respective
-  //             vectors.
+      // Create a 1x85 Mat and store class scores of 80 classes.
+      cv::Mat scores(1, class_list.size(), CV_32FC1, classes_scores);
 
-  //             confidences.push_back(confidence);
-  //             class_ids.push_back(class_id.x);
+      // Perform minMaxLoc and acquire index of best class score.
+      cv::Point class_id;
+      double max_class_score;
+      cv::minMaxLoc(scores, 0, &max_class_score, 0, &class_id);
+      // Continue if the class score is above the threshold.
+      if (max_class_score > SCORE_THRESHOLD) {
+        // Store class ID and confidence in the pre-defined respective
+        confidences->push_back(confidence);
+        class_ids->push_back(class_id.x);
 
-  //             // Center.
-  //             float cx = data[0];
-  //             float cy = data[1];
-  //             // Box dimension.
-  //             float w = data[2];
-  //             float h = data[3];
-  //             // Bounding box coordinates.
-  //             int left = int((cx - 0.5 * w) * x_factor);
-  //             int top = int((cy - 0.5 * h) * y_factor);
-  //             int width = int(w * x_factor);
-  //             int height = int(h * y_factor);
-  //             // Store good detections in the boxes vector.
-  //             boxes.push_back(cv::Rect(left, top, width, height));
-  //         }
+        // Center.
+        float cx = data[0];
+        float cy = data[1];
+        // Box dimension.
+        float w = data[2];
+        float h = data[3];
+        // Bounding box coordinates.
+        int left = static_cast<int>((cx - 0.5 * w) * x_factor);
+        int top = static_cast<int>((cy - 0.5 * h) * y_factor);
+        int width = static_cast<int>(w * x_factor);
+        int height = static_cast<int>(h * y_factor);
+        // Store good detections in the boxes vector.
+        boxes->push_back(cv::Rect(left, top, width, height));
+      }
+    }
+    // Jump to the next column.
+    data += 85;
+  }
 
-  //     }
-  //     // Jump to the next column.
-  //     data += 85;
-  // }
+  // Perform Non Maximum Suppression and draw predictions.
+  cv::dnn::NMSBoxes(*boxes, *confidences, SCORE_THRESHOLD, NMS_THRESHOLD,
+                    *indices);
 
-  // // Perform Non Maximum Suppression and draw predictions.
-  // std::vector<int> indices;
-  // cv::dnn::NMSBoxes(boxes, confidences, SCORE_THRESHOLD, NMS_THRESHOLD,
-  // indices); for (int i = 0; i < indices.size(); i++)
-  // {
-  //     int idx = indices[i];
-  //     cv::Rect box = boxes[idx];
+  // cv::Ptr<cv::Tracker> csrt_tracker = cv::TrackerCSRT::create();
 
-  //     int left = box.x;
-  //     int top = box.y;
-  //     int width = box.width;
-  //     int height = box.height;
-  //     // Draw bounding box.
-  //     rectangle(input_image, cv::Point(left, top), cv::Point(left + width,
-  //     top + height), BLUE, 3*THICKNESS);
-
-  //     // Get the label for the class name and its confidence.
-  //     std::string label = cv::format("%.2f", confidences[idx]);
-  //     label = class_list[class_ids[idx]] + ":" + label;
-  //     // Draw class labels.
-  //     // draw_label(input_image, label, left, top);
-  //     int baseLine;
-  //     cv::Size label_size = cv::getTextSize(label, FONT_FACE, FONT_SCALE,
-  //     THICKNESS, &baseLine); top = std::max(top, label_size.height);
-  // // Top left corner.
-  //     cv::Point tlc = cv::Point(left, top);
-  // // Bottom right corner.
-  //     cv::Point brc = cv::Point(left + label_size.width, top +
-  //     label_size.height + baseLine);
-  // // Draw black rectangle.
-  //     cv::rectangle(input_image, tlc, brc, BLACK, cv::FILLED);
-  // // Put the label on the black rectangle.
-  //     cv::putText(input_image, label, cv::Point(left, top +
-  //     label_size.height), FONT_FACE, FONT_SCALE, YELLOW, THICKNESS);
-  // }
-  cv::Mat m1 = cv::Mat::zeros(1, 1, CV_64F);
-  return m1;
-
-  // return input_image;
+  return input_image;
 }

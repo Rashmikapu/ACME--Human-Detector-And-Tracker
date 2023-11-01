@@ -1,6 +1,8 @@
 <map id="main" name="main">
-<area shape="rect" id="node1" title=" " alt="" coords="5,46,60,73"/>
-<area shape="rect" id="node2" href="$classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking." alt="" coords="108,46,295,73"/>
-<area shape="rect" id="node3" href="$classperception_1_1Visualization.html#a3bad1116643e5fe30db930f18b25344c" title="Create Bounding box." alt="" coords="343,5,525,47"/>
-<area shape="rect" id="node4" href="$classperception_1_1Visualization.html#a27eced3ee30ed60f0be7d5c0b918d100" title="Display the results." alt="" coords="343,71,525,112"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,60,138"/>
+<area shape="rect" id="node2" href="$classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking on live feed." alt="" coords="108,111,295,138"/>
+<area shape="rect" id="node3" href="$classperception_1_1Visualization.html#a17eca5de4f7531b993edeb39486ec3e6" title="Create bounding boxes for detected objects." alt="" coords="348,5,531,47"/>
+<area shape="rect" id="node4" href="$classperception_1_1Visualization.html#aff951f03efe11794c1053f4d776e2817" title="Display the detection results." alt="" coords="348,71,531,112"/>
+<area shape="rect" id="node5" href="$classperception_1_1HumanTracker.html#a6fd3ada0305a2451abf70e98cc7680c4" title="Creates and configures the tracking algorithm." alt="" coords="343,136,536,177"/>
+<area shape="rect" id="node6" href="$classperception_1_1HumanTracker.html#a110afa8d5652b9eb544945666b1c4f86" title="Update the human tracking with the latest frame." alt="" coords="343,201,536,243"/>
 </map>

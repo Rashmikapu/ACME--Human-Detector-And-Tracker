@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['black_68',['BLACK',['../classperception_1_1HumanDetector.html#a8b67766af0f4cdfffb7e1bc4b60cf101',1,'perception::HumanDetector']]],
-  ['blue_69',['BLUE',['../classperception_1_1HumanDetector.html#a38c9d0fc516cc83e9b524c92785ff78e',1,'perception::HumanDetector']]]
+  ['class_5flist_76',['class_list',['../classperception_1_1HumanDetector.html#a38c470e4a7536167f51bd72f0a631dd4',1,'perception::HumanDetector']]],
+  ['csrt_5ftracker_77',['csrt_tracker',['../classperception_1_1HumanTracker.html#aefd36b1e65bc80e6e204e806a47e8034',1,'perception::HumanTracker']]]
 ];

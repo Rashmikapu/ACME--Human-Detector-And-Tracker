@@ -2,8 +2,14 @@
 add_executable(cpp-test
   # list of source cpp files:
   main.cpp
-  test.cpp
+  human_detector_test.cpp
+  human_tracker_test.cpp
+  visualization_test.cpp
+  my_robot_test.cpp
   ../app/human_detector.cpp
+  ../app/visualization.cpp
+  ../app/human_tracker.cpp
+  ../app/my_robot.cpp
   )
 
 # Any include directories needed to build this target.

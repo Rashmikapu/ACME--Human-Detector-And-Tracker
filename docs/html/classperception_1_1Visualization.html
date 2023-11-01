@@ -88,18 +88,18 @@ Collaboration diagram for perception::Visualization:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a27eced3ee30ed60f0be7d5c0b918d100"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classperception_1_1Visualization.html#a27eced3ee30ed60f0be7d5c0b918d100">displayResults</a> ()</td></tr>
-<tr class="memdesc:a27eced3ee30ed60f0be7d5c0b918d100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the results.  <a href="classperception_1_1Visualization.html#a27eced3ee30ed60f0be7d5c0b918d100">More...</a><br /></td></tr>
-<tr class="separator:a27eced3ee30ed60f0be7d5c0b918d100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bad1116643e5fe30db930f18b25344c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classperception_1_1Visualization.html#a3bad1116643e5fe30db930f18b25344c">createBoundingBox</a> ()</td></tr>
-<tr class="memdesc:a3bad1116643e5fe30db930f18b25344c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create Bounding box.  <a href="classperception_1_1Visualization.html#a3bad1116643e5fe30db930f18b25344c">More...</a><br /></td></tr>
-<tr class="separator:a3bad1116643e5fe30db930f18b25344c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff951f03efe11794c1053f4d776e2817"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classperception_1_1Visualization.html#aff951f03efe11794c1053f4d776e2817">displayResults</a> (cv::dnn::Net &amp;net, cv::Mat &amp;detector)</td></tr>
+<tr class="memdesc:aff951f03efe11794c1053f4d776e2817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the detection results.  <a href="classperception_1_1Visualization.html#aff951f03efe11794c1053f4d776e2817">More...</a><br /></td></tr>
+<tr class="separator:aff951f03efe11794c1053f4d776e2817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17eca5de4f7531b993edeb39486ec3e6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classperception_1_1Visualization.html#a17eca5de4f7531b993edeb39486ec3e6">createBoundingBox</a> (std::vector&lt; int &gt; indices, std::vector&lt; cv::Rect &gt; boxes, std::vector&lt; cv::Rect2d &gt; *bboxes, cv::Mat &amp;input_image, std::vector&lt; std::string &gt; class_list, std::vector&lt; int &gt; class_ids, std::vector&lt; float &gt; confidences)</td></tr>
+<tr class="memdesc:a17eca5de4f7531b993edeb39486ec3e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create bounding boxes for detected objects.  <a href="classperception_1_1Visualization.html#a17eca5de4f7531b993edeb39486ec3e6">More...</a><br /></td></tr>
+<tr class="separator:a17eca5de4f7531b993edeb39486ec3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A utility class for displaying results and creating bounding boxes for visualization. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3bad1116643e5fe30db930f18b25344c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bad1116643e5fe30db930f18b25344c">&#9670;&nbsp;</a></span>createBoundingBox()</h2>
+<a id="a17eca5de4f7531b993edeb39486ec3e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17eca5de4f7531b993edeb39486ec3e6">&#9670;&nbsp;</a></span>createBoundingBox()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -110,8 +110,49 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void perception::Visualization::createBoundingBox </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::vector&lt; cv::Rect &gt;&#160;</td>
+          <td class="paramname"><em>boxes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; cv::Rect2d &gt; *&#160;</td>
+          <td class="paramname"><em>bboxes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>input_image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>class_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>class_ids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>confidences</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -121,22 +162,36 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Create Bounding box. </p>
+<p>Create bounding boxes for detected objects. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>A vector of indices of valid detections. </td></tr>
+    <tr><td class="paramname">boxes</td><td>A vector of bounding boxes for detected objects. </td></tr>
+    <tr><td class="paramname">bboxes</td><td>A vector to store bounding boxes (Rect2d format). </td></tr>
+    <tr><td class="paramname">input_image</td><td>The input image for which bounding boxes are created. </td></tr>
+    <tr><td class="paramname">class_list</td><td>A list of class labels for detected objects. </td></tr>
+    <tr><td class="paramname">class_ids</td><td>A vector of class IDs for detected objects. </td></tr>
+    <tr><td class="paramname">confidences</td><td>A vector of detection confidences.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This method creates bounding boxes for detected objects based on the provided indices, boxes, and additional information. The resulting bounding boxes are stored in the bboxes vector. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classperception_1_1Visualization_a3bad1116643e5fe30db930f18b25344c_icgraph.png" border="0" usemap="#classperception_1_1Visualization_a3bad1116643e5fe30db930f18b25344c_icgraph" alt=""/></div>
-<map name="classperception_1_1Visualization_a3bad1116643e5fe30db930f18b25344c_icgraph" id="classperception_1_1Visualization_a3bad1116643e5fe30db930f18b25344c_icgraph">
-<area shape="rect" title="Create Bounding box." alt="" coords="343,5,525,47"/>
-<area shape="rect" href="classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking." alt="" coords="108,13,295,39"/>
-<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
+<div class="center"><img src="classperception_1_1Visualization_a17eca5de4f7531b993edeb39486ec3e6_icgraph.png" border="0" usemap="#classperception_1_1Visualization_a17eca5de4f7531b993edeb39486ec3e6_icgraph" alt=""/></div>
+<map name="classperception_1_1Visualization_a17eca5de4f7531b993edeb39486ec3e6_icgraph" id="classperception_1_1Visualization_a17eca5de4f7531b993edeb39486ec3e6_icgraph">
+<area shape="rect" title="Create bounding boxes for detected objects." alt="" coords="343,27,525,69"/>
+<area shape="rect" href="classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking on live feed." alt="" coords="108,5,295,32"/>
+<area shape="rect" href="classperception_1_1MyRobot.html#a367ac7bc44989f3aa77ac89f740a5747" title="Run the robot&#39;s operations, including human detection and tracking on the sample image." alt="" coords="123,57,280,98"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a27eced3ee30ed60f0be7d5c0b918d100"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27eced3ee30ed60f0be7d5c0b918d100">&#9670;&nbsp;</a></span>displayResults()</h2>
+<a id="aff951f03efe11794c1053f4d776e2817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff951f03efe11794c1053f4d776e2817">&#9670;&nbsp;</a></span>displayResults()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,8 +202,19 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void perception::Visualization::displayResults </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">cv::dnn::Net &amp;&#160;</td>
+          <td class="paramname"><em>net</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>detector</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -158,15 +224,23 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Display the results. </p>
+<p>Display the detection results. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">net</td><td>The neural network model used for detection. </td></tr>
+    <tr><td class="paramname">detector</td><td>The input image containing detection results. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classperception_1_1Visualization_a27eced3ee30ed60f0be7d5c0b918d100_icgraph.png" border="0" usemap="#classperception_1_1Visualization_a27eced3ee30ed60f0be7d5c0b918d100_icgraph" alt=""/></div>
-<map name="classperception_1_1Visualization_a27eced3ee30ed60f0be7d5c0b918d100_icgraph" id="classperception_1_1Visualization_a27eced3ee30ed60f0be7d5c0b918d100_icgraph">
-<area shape="rect" title="Display the results." alt="" coords="343,5,525,47"/>
-<area shape="rect" href="classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking." alt="" coords="108,13,295,39"/>
-<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,39"/>
+<div class="center"><img src="classperception_1_1Visualization_aff951f03efe11794c1053f4d776e2817_icgraph.png" border="0" usemap="#classperception_1_1Visualization_aff951f03efe11794c1053f4d776e2817_icgraph" alt=""/></div>
+<map name="classperception_1_1Visualization_aff951f03efe11794c1053f4d776e2817_icgraph" id="classperception_1_1Visualization_aff951f03efe11794c1053f4d776e2817_icgraph">
+<area shape="rect" title="Display the detection results." alt="" coords="343,27,525,69"/>
+<area shape="rect" href="classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking on live feed." alt="" coords="108,5,295,32"/>
+<area shape="rect" href="classperception_1_1MyRobot.html#a367ac7bc44989f3aa77ac89f740a5747" title="Run the robot&#39;s operations, including human detection and tracking on the sample image." alt="" coords="123,57,280,98"/>
+<area shape="rect" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
 

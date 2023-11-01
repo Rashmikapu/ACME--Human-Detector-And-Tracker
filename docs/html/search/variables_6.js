@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['red_81',['RED',['../classperception_1_1HumanDetector.html#ae451f903089a84e2d03ab846a157b414',1,'perception::HumanDetector']]]
+  ['yolo_86',['yolo',['../classperception_1_1MyRobot.html#a66361c815c955b3ce612c5550a5a3578',1,'perception::MyRobot']]]
 ];

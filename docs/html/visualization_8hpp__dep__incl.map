@@ -1,5 +1,6 @@
 <map id="include/visualization.hpp" name="include/visualization.hpp">
-<area shape="rect" id="node1" title="This program is used to visualize each frame of the video detecting and tracking humans." alt="" coords="69,5,253,32"/>
-<area shape="rect" id="node2" href="$my__robot_8cpp.html" title=" " alt="" coords="5,80,144,107"/>
-<area shape="rect" id="node3" href="$visualization_8cpp.html" title=" " alt="" coords="168,80,328,107"/>
+<area shape="rect" id="node1" title="This program is used to visualize each frame of the video detecting and tracking humans." alt="" coords="190,5,374,32"/>
+<area shape="rect" id="node2" href="$human__detector_8cpp.html" title="This file contains the implementation of HumanDetector class." alt="" coords="5,80,188,107"/>
+<area shape="rect" id="node3" href="$my__robot_8cpp.html" title="The file contains the implementation of MyRobot class." alt="" coords="213,80,351,107"/>
+<area shape="rect" id="node4" href="$visualization_8cpp.html" title="The file contains the implementation of Visualization class." alt="" coords="375,80,535,107"/>
 </map>

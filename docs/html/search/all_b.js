@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['thickness_33',['THICKNESS',['../classperception_1_1HumanDetector.html#aabbe8a67a11cd5e7d778a4e9d71b6f2a',1,'perception::HumanDetector']]],
-  ['tracker_34',['tracker',['../classperception_1_1MyRobot.html#af3844632c96384224da8593e02c3b9ff',1,'perception::MyRobot']]]
+  ['score_5fthreshold_35',['SCORE_THRESHOLD',['../my__macros_8hpp.html#aa17a0d79991b9f667cf1f8fb04e26946',1,'my_macros.hpp']]]
 ];

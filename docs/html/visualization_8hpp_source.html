@@ -75,22 +75,26 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceperception.html">perception</a> {</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classperception_1_1Visualization.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classperception_1_1Visualization.html">Visualization</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classperception_1_1Visualization.html#a27eced3ee30ed60f0be7d5c0b918d100">displayResults</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classperception_1_1Visualization.html#a3bad1116643e5fe30db930f18b25344c">createBoundingBox</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}  <span class="comment">// namespace perception</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceperception.html">perception</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classperception_1_1Visualization.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classperception_1_1Visualization.html">Visualization</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classperception_1_1Visualization.html#aff951f03efe11794c1053f4d776e2817">displayResults</a>(cv::dnn::Net &amp;net, cv::Mat &amp;detector);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classperception_1_1Visualization.html#a17eca5de4f7531b993edeb39486ec3e6">createBoundingBox</a>(std::vector&lt;int&gt; indices, std::vector&lt;cv::Rect&gt; boxes,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    std::vector&lt;cv::Rect2d&gt; *bboxes, cv::Mat &amp;input_image,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    std::vector&lt;std::string&gt; class_list,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    std::vector&lt;int&gt; class_ids, std::vector&lt;float&gt; confidences);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <span class="comment">// namespace perception</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassperception_1_1Visualization_html_a27eced3ee30ed60f0be7d5c0b918d100"><div class="ttname"><a href="classperception_1_1Visualization.html#a27eced3ee30ed60f0be7d5c0b918d100">perception::Visualization::displayResults</a></div><div class="ttdeci">static void displayResults()</div><div class="ttdoc">Display the results.</div><div class="ttdef"><b>Definition:</b> visualization.cpp:5</div></div>
-<div class="ttc" id="aclassperception_1_1Visualization_html"><div class="ttname"><a href="classperception_1_1Visualization.html">perception::Visualization</a></div><div class="ttdoc">A utility class for displaying results and creating bounding boxes for visualization.</div><div class="ttdef"><b>Definition:</b> visualization.hpp:23</div></div>
-<div class="ttc" id="anamespaceperception_html"><div class="ttname"><a href="namespaceperception.html">perception</a></div><div class="ttdef"><b>Definition:</b> human_detector.hpp:26</div></div>
-<div class="ttc" id="aclassperception_1_1Visualization_html_a3bad1116643e5fe30db930f18b25344c"><div class="ttname"><a href="classperception_1_1Visualization.html#a3bad1116643e5fe30db930f18b25344c">perception::Visualization::createBoundingBox</a></div><div class="ttdeci">static void createBoundingBox()</div><div class="ttdoc">Create Bounding box.</div><div class="ttdef"><b>Definition:</b> visualization.cpp:3</div></div>
+<div class="ttc" id="aclassperception_1_1Visualization_html_a17eca5de4f7531b993edeb39486ec3e6"><div class="ttname"><a href="classperception_1_1Visualization.html#a17eca5de4f7531b993edeb39486ec3e6">perception::Visualization::createBoundingBox</a></div><div class="ttdeci">static void createBoundingBox(std::vector&lt; int &gt; indices, std::vector&lt; cv::Rect &gt; boxes, std::vector&lt; cv::Rect2d &gt; *bboxes, cv::Mat &amp;input_image, std::vector&lt; std::string &gt; class_list, std::vector&lt; int &gt; class_ids, std::vector&lt; float &gt; confidences)</div><div class="ttdoc">Create bounding boxes for detected objects.</div><div class="ttdef"><b>Definition:</b> visualization.cpp:16</div></div>
+<div class="ttc" id="aclassperception_1_1Visualization_html_aff951f03efe11794c1053f4d776e2817"><div class="ttname"><a href="classperception_1_1Visualization.html#aff951f03efe11794c1053f4d776e2817">perception::Visualization::displayResults</a></div><div class="ttdeci">static void displayResults(cv::dnn::Net &amp;net, cv::Mat &amp;detector)</div><div class="ttdoc">Display the detection results.</div><div class="ttdef"><b>Definition:</b> visualization.cpp:60</div></div>
+<div class="ttc" id="aclassperception_1_1Visualization_html"><div class="ttname"><a href="classperception_1_1Visualization.html">perception::Visualization</a></div><div class="ttdoc">A utility class for displaying results and creating bounding boxes for visualization.</div><div class="ttdef"><b>Definition:</b> visualization.hpp:25</div></div>
+<div class="ttc" id="anamespaceperception_html"><div class="ttname"><a href="namespaceperception.html">perception</a></div><div class="ttdef"><b>Definition:</b> human_detector.hpp:23</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

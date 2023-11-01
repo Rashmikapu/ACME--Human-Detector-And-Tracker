@@ -1,14 +1,14 @@
 find_package(Eigen3 REQUIRED)
-find_package(OpenCV REQUIRED)
+find_package(OpenCV REQUIRED COMPONENTS tracking)
 # Any C++ source files needed to build this target (shell-app).
 add_executable(shell-app
   # list of source cpp files:
   main.cpp
+  visualization.cpp
   human_detector.cpp
   human_tracker.cpp
   my_robot.cpp
-  visualization.cpp
-  )
+)
 
 # Any include directories needed to build this target.
 # Note: we do not need to specify the include directories for the

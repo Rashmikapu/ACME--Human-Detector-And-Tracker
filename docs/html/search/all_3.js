@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['font_5fface_8',['FONT_FACE',['../classperception_1_1HumanDetector.html#a5f3a43093999f31060e91eb96af37072',1,'perception::HumanDetector']]],
-  ['font_5fscale_9',['FONT_SCALE',['../classperception_1_1HumanDetector.html#a71947a4708161f2d8acfd996b271acb5',1,'perception::HumanDetector']]]
+  ['font_5fface_7',['FONT_FACE',['../my__macros_8hpp.html#aaf525b9868355c9f24ab689b6ea28ee2',1,'my_macros.hpp']]],
+  ['font_5fscale_8',['FONT_SCALE',['../my__macros_8hpp.html#a3943979133de3f5a323227e4b3afcbfb',1,'my_macros.hpp']]]
 ];

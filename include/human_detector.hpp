@@ -3,7 +3,7 @@
  * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
  * @brief This file contains the import of YOLO model and detecting humans.
  * @version 0.1
- * @date 2023-10-17
+ * @date 2023-10-31
  *
  * @copyright Copyright (c) 2023
  *
@@ -12,51 +12,43 @@
 #ifndef __HUMAN_DETECTOR_H__
 #define __HUMAN_DETECTOR_H__
 #pragma once
+#include "opencv2/core/core.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include <../include/my_macros.hpp>
 #include <fstream>
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-
-// using namespace cv;
-// using namespace std;
-// using namespace cv::dnn;
 namespace perception {
 /**
  * @class HumanDetector
- * @brief Class for detecting humans in images using YOLO (You Only Look Once) object detection.
+ * @brief Class for detecting humans in images using YOLO (You Only Look Once)
+ * object detection.
  */
 class HumanDetector {
-  // net my_net;
   float input_height;
   float input_width;
   cv::dnn::Net net;
-  std::vector<std::string> class_list;
-  const float SCORE_THRESHOLD = 0.5;
-  const float NMS_THRESHOLD = 0.45;
-  const float CONFIDENCE_THRESHOLD = 0.45;
-  const float FONT_SCALE = 0.7;
-  const int FONT_FACE = cv::FONT_HERSHEY_SIMPLEX;
-  const int THICKNESS = 1;
-  cv::Scalar BLACK = cv::Scalar(0, 0, 0);
-  cv::Scalar BLUE = cv::Scalar(255, 178, 50);
-  cv::Scalar YELLOW = cv::Scalar(0, 255, 255);
-  cv::Scalar RED = cv::Scalar(0, 0, 255);
-  // cv::Mat frame;
 
- public:
+public:
+  std::vector<std::string> class_list;
+
+public:
   /**
-   * @brief Constructor for the HumanDetector class.
+   * @brief Default constructor for the HumanDetector class.
+   *
+   * This constructor initializes the HumanDetector object with default values.
    */
   HumanDetector();
 
   /**
    * @brief Load the YOLO neural network model for object detection.
+   *
+   * @param model_path The path to the YOLO model
    * @return The YOLO neural network model.
    */
-  cv::dnn::Net YoloModel();
+  cv::dnn::Net YoloModel(std::string &model_path);
 
   /**
    * @brief Preprocess the input image for object detection
@@ -68,14 +60,21 @@ class HumanDetector {
   std::vector<cv::Mat> preProcess(cv::Mat &input, cv::dnn::Net &model);
 
   /**
-   * @brief Postprocess the output of object detection.
+   * @brief Postprocess the output of object detection to obtain bounding boxes and labels.
+   *
    * @param input Input image for detection.
    * @param detections Vector of detection results.
+   * @param class_ids Vector to store detected class IDs.
+   * @param confidences Vector to store detection confidences.
+   * @param boxes Vector to store bounding boxes.
+   * @param indices Vector to store indices of valid detections.
    * @return Processed image with bounding boxes and labels.
    */
-  cv::Mat postProcess(cv::Mat &input, std::vector<cv::Mat> &detections);
+  cv::Mat postProcess(const cv::Mat &input, const std::vector<cv::Mat> &detections,
+                      std::vector<int>* class_ids,
+                      std::vector<float>* confidences,
+                      std::vector<cv::Rect>* boxes, std::vector<int>* indices);
 };
-}  // namespace perception
+} // namespace perception
 
 #endif
-
