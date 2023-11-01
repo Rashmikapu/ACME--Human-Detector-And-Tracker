@@ -23,8 +23,7 @@ for real-time performance.
 ## Activity Diagram
 
 <p align="center">
-<img width="60%" alt="Activity Diagram" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/Development1/Activity_diagram.jpeg">
-<img width="60%" alt="Activity Diagram" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/dev2/UML_Final_Activity.png">
+<img width="60%" alt="Activity Diagram" src="/UML_Final_Activity.png">
 </p>
 
 ## Team 
