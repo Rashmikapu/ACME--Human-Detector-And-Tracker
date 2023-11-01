@@ -73,10 +73,17 @@ The phase is implemented using Agile Iterative Process with a 1 week sprint and 
 - Detailed Doxygen Documentation
 - Cpplint and Cppcheck error optimisation
 ## Results
-
+The below video displays the results of human detection on individual images
 <p align="center">
-<img width="50%" alt="Activity Diagram" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/dev2/results/result_video.gif">
+<img width="50%" alt="Result Video" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/dev2/results/results.gif">
 </p>
+
+
+The below video displays the results of human detection on live camera feed.
+<p align="center">
+<img width="50%" alt="Result Video" src="https://github.com/vinay06vinay/Human-Detector-And-Tracker/blob/dev2/results/result_video.gif">
+</p>
+
 
 ## Dependencies Installation
 The project requires opencv library installation. Follow the below procedure to install opencv libraries
