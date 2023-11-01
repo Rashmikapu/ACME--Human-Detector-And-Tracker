@@ -3,7 +3,7 @@
  * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
  * @brief This file contains the import of YOLO model and detecting humans.
  * @version 0.1
- * @date 2023-10-17
+ * @date 2023-10-31
  *
  * @copyright Copyright (c) 2023
  *
@@ -20,9 +20,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
-// using namespace cv;
-// using namespace std;
-// using namespace cv::dnn;
 namespace perception {
 /**
  * @class HumanDetector
@@ -30,7 +27,6 @@ namespace perception {
  * object detection.
  */
 class HumanDetector {
-  // net my_net;
   float input_height;
   float input_width;
   cv::dnn::Net net;
@@ -40,12 +36,16 @@ public:
 
 public:
   /**
-   * @brief Constructor for the HumanDetector class.
+   * @brief Default constructor for the HumanDetector class.
+   *
+   * This constructor initializes the HumanDetector object with default values.
    */
   HumanDetector();
 
   /**
    * @brief Load the YOLO neural network model for object detection.
+   *
+   * @param model_path The path to the YOLO model
    * @return The YOLO neural network model.
    */
   cv::dnn::Net YoloModel(std::string &model_path);
@@ -60,9 +60,14 @@ public:
   std::vector<cv::Mat> preProcess(cv::Mat &input, cv::dnn::Net &model);
 
   /**
-   * @brief Postprocess the output of object detection.
+   * @brief Postprocess the output of object detection to obtain bounding boxes and labels.
+   *
    * @param input Input image for detection.
    * @param detections Vector of detection results.
+   * @param class_ids Vector to store detected class IDs.
+   * @param confidences Vector to store detection confidences.
+   * @param boxes Vector to store bounding boxes.
+   * @param indices Vector to store indices of valid detections.
    * @return Processed image with bounding boxes and labels.
    */
   cv::Mat postProcess(cv::Mat &input, std::vector<cv::Mat> &detections,

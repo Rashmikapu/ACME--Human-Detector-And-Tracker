@@ -4,7 +4,7 @@
  * @brief This program is used to start the camera or load the video and do all
  * processing for the robot.
  * @version 0.1
- * @date 2023-10-17
+ * @date 2023-10-31
  *
  * @copyright Copyright (c) 2023
  *
@@ -38,19 +38,45 @@ class MyRobot {
   cv::Mat R;
   cv::Mat T;
 
-  
  public:
   /**
-   * @brief Constructor for the MyRobot class.
+   * @brief Default constructor for the MyRobot class.
+   *
+   * This constructor initializes the MyRobot object with default values.
    */
   MyRobot();
+
+  /**
+   * @brief Constructor for the MyRobot class with calibration parameters.
+   *
+   * @param my_K The camera calibration matrix.
+   * @param my_R The rotation matrix.
+   * @param my_T The translation matrix.
+   */
   MyRobot(cv::Mat my_K, cv::Mat my_R, cv::Mat my_T);
 
   /**
-   * @brief Run the robot's operations, including human detection and tracking.
+   * @brief Run the robot's operations, including human detection and tracking on live feed
    */
   void run();
+
+  /**
+   * @brief Run the robot's operations, including human detection and tracking on the sample image
+   */
   void RunOnImage();
+
+  /**
+   * @brief Transform detected objects to the robot's frame of reference.
+   *
+   * @param detected_objects A vector of rectangles representing detected objects.
+   * @param X Output for transformed X-coordinate.
+   * @param Y Output for transformed Y-coordinate.
+   * @param Z Output for transformed Z-coordinate.
+   *
+   * This method transforms the coordinates of detected objects from their original
+   * frame of reference to the robot's frame of reference. The results are stored in
+   * the provided X, Y, and Z values.
+   */
   void TransformToRobotFrame(std::vector<cv::Rect> &detected_objects,double* X, double* Y, double*Z);
 };
 }  // namespace perception

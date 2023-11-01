@@ -1,3 +1,13 @@
+/**
+ * @file visualization.cpp
+ * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
+ * @brief The file contains the implementation of Visualization class
+ * @version 0.1
+ * @date 2023-10-31
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <../include/my_macros.hpp>
 #include <../include/visualization.hpp>
 #include <opencv2/core/types.hpp>

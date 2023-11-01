@@ -1,3 +1,13 @@
+/**
+ * @file human_detector.cpp
+ * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
+ * @brief This file contains the implementation of HumanDetector class
+ * @version 0.1
+ * @date 2023-10-31
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <../include/human_detector.hpp>
 #include <../include/my_macros.hpp>
 
@@ -17,6 +27,7 @@ perception::HumanDetector::HumanDetector() {
   input_height = 640.0;
   input_width = 640.0;
 }
+
 cv::dnn::Net perception::HumanDetector::YoloModel(std::string &model_path) {
   class_list.push_back("person");
   net = cv::dnn::readNet(model_path);
@@ -25,11 +36,9 @@ cv::dnn::Net perception::HumanDetector::YoloModel(std::string &model_path) {
 
 std::vector<cv::Mat>
 perception::HumanDetector::preProcess(cv::Mat &input, cv::dnn::Net &model) {
-  cv::Mat blob; // Create a matrix called blob
-  // std::cout << "Input dimensions: " << input.size() << std::endl;
-  // std::cout << "Input data type: " << cv::typeToString(input.type()) <<
-  // std::endl;
-
+  // Create a matrix called blob
+  cv::Mat blob; 
+  
   // Size is to represent the desired image blob size
   // Scalar() is for mean subtraction
   // true : This indicates that the input image should be considered in BGR
@@ -39,13 +48,12 @@ perception::HumanDetector::preProcess(cv::Mat &input, cv::dnn::Net &model) {
   cv::dnn::blobFromImage(input, blob, 1.0 / 255.0,
                          cv::Size(input_width, input_height), cv::Scalar(),
                          true, false);
-  // std::cout << "Blob dimensions: " << blob.size() << std::endl;
-  // std::cout << "Blob data type: " << blob.type() << std::endl;
+  
   model.setInput(blob);
   std::vector<cv::Mat> outputs;
 
   model.forward(outputs, model.getUnconnectedOutLayersNames());
-  // std::cout<<"outputs:"<<std::endl<<outputs[0].size();
+
   return outputs;
 }
 
@@ -56,8 +64,7 @@ cv::Mat perception::HumanDetector::postProcess(cv::Mat &input_image,
                                                std::vector<cv::Rect> *boxes,
                                                std::vector<int> *indices) {
   
-  // std::cout<<"Input image"<<input_image.rows<<input_image.cols;
-  // Resizing factor.
+ 
   float x_factor = input_image.cols / input_width;
   float y_factor = input_image.rows / input_height;
 
@@ -65,24 +72,22 @@ cv::Mat perception::HumanDetector::postProcess(cv::Mat &input_image,
 
   const int dimensions = 85;
   const int rows = 25200;
+
   // Iterate through 25200 detections.
   for (int i = 0; i < rows; ++i) {
     float confidence = data[4];
-    // std::cout<<"confidence: "<<confidence;
     // Discard bad detections and continue.
     if (confidence >= CONFIDENCE_THRESHOLD) {
-      // std::cout<<"Inside confidence if";
       float *classes_scores = data + 5;
+
       // Create a 1x85 Mat and store class scores of 80 classes.
-      // std::cout<<"Class list size:"<<class_list.size();
       cv::Mat scores(1, class_list.size(), CV_32FC1, classes_scores);
-      // std::cout<<"Scores size"<<scores;
+     
       // Perform minMaxLoc and acquire index of best class score.
       cv::Point class_id;
       double max_class_score;
       cv::minMaxLoc(scores, 0, &max_class_score, 0, &class_id);
       // Continue if the class score is above the threshold.
-      // std::cout<<"Max class scores:"<<max_class_score;
       if (max_class_score > SCORE_THRESHOLD) {
         // Store class ID and confidence in the pre-defined respective
         confidences->push_back(confidence);
@@ -110,12 +115,8 @@ cv::Mat perception::HumanDetector::postProcess(cv::Mat &input_image,
   // Perform Non Maximum Suppression and draw predictions.
   cv::dnn::NMSBoxes(*boxes, *confidences, SCORE_THRESHOLD, NMS_THRESHOLD,
                     *indices);
-  // std::cout<<"Indices :"<<indices.size();
-  // std::cout<<"No.of humans:"<<boxes.size();
+  
   cv::Ptr<cv::Tracker> csrt_tracker = cv::TrackerCSRT::create();
-
-  // perception::Visualization::createBoundingBox(indices, boxes, bboxes,
-  // input_image,class_list, class_ids, confidences);
 
   return input_image;
 }

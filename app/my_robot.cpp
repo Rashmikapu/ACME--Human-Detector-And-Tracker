@@ -1,3 +1,13 @@
+/**
+ * @file my_robot.cpp
+ * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
+ * @brief The file contains the implementation of MyRobot class
+ * @version 0.1
+ * @date 2023-10-31
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <../include/my_macros.hpp>
 #include <../include/my_robot.hpp>
 #include <opencv2/highgui.hpp>
@@ -27,8 +37,7 @@ void perception::MyRobot::run() {
   cv::Mat detector;
   std::string model_path = "data/models/yolov5s.onnx";
   net = yolo.YoloModel(model_path);
-  cv::VideoCapture cap(0); // 0 corresponds to the default camera (you can try
-                           // different values if you have multiple cameras)
+  cv::VideoCapture cap(0);
 
   // Check if the camera was opened successfully
   if (!cap.isOpened()) {
@@ -104,7 +113,7 @@ void perception::MyRobot::RunOnImage() {
   perception::HumanTracker tracker_object;
   tracker_object.Initialize();
   tracker_object.update(bboxes, detector);
-  
+
   perception::Visualization::displayResults(net, detector);
 
   // Transform and print the bounding box coordinates in Robot reference frame

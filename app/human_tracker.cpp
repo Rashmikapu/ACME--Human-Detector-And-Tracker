@@ -1,3 +1,13 @@
+/**
+ * @file human_detector.cpp
+ * @author Neha Nitin Madhekar, Rashmi Kapu, Vinay Krishna Bukka
+ * @brief This file contains the implementation of HumanTracker class
+ * @version 0.1
+ * @date 2023-10-17
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include "../include/human_tracker.hpp"
 #include<opencv2/tracking.hpp>
 #include<iostream>
