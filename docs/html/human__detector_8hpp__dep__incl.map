@@ -1,0 +1,7 @@
+<map id="include/human_detector.hpp" name="include/human_detector.hpp">
+<area shape="rect" id="node1" title="This file contains the import of YOLO model and detecting humans." alt="" coords="195,5,401,32"/>
+<area shape="rect" id="node2" href="$human__detector_8cpp.html" title="This file contains the implementation of HumanDetector class." alt="" coords="5,155,188,181"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="The file contains the main function. It creates the object of my_robot class and calls run function." alt="" coords="212,155,323,181"/>
+<area shape="rect" id="node4" href="$my__robot_8cpp.html" title="The file contains the implementation of MyRobot class." alt="" coords="347,155,486,181"/>
+<area shape="rect" id="node5" href="$my__robot_8hpp.html" title="This program is used to start the camera or load the video and do all processing for the robot." alt="" coords="158,80,321,107"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="perception::Visualization::createBoundingBox" name="perception::Visualization::createBoundingBox">
+<area shape="rect" id="node1" title="Create bounding boxes for detected objects." alt="" coords="343,27,525,69"/>
+<area shape="rect" id="node2" href="$classperception_1_1MyRobot.html#abcc22d3f1117a5151eb3ec4eb5fb2ece" title="Run the robot&#39;s operations, including human detection and tracking on live feed." alt="" coords="108,5,295,32"/>
+<area shape="rect" id="node4" href="$classperception_1_1MyRobot.html#a367ac7bc44989f3aa77ac89f740a5747" title="Run the robot&#39;s operations, including human detection and tracking on the sample image." alt="" coords="123,57,280,98"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,5,60,32"/>
+</map>

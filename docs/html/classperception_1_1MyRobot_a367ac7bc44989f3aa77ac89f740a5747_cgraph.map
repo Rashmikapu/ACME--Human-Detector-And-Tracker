@@ -1,0 +1,7 @@
+<map id="perception::MyRobot::RunOnImage" name="perception::MyRobot::RunOnImage">
+<area shape="rect" id="node1" title="Run the robot&#39;s operations, including human detection and tracking on the sample image." alt="" coords="5,104,163,145"/>
+<area shape="rect" id="node2" href="$classperception_1_1Visualization.html#a17eca5de4f7531b993edeb39486ec3e6" title="Create bounding boxes for detected objects." alt="" coords="216,5,399,47"/>
+<area shape="rect" id="node3" href="$classperception_1_1Visualization.html#aff951f03efe11794c1053f4d776e2817" title="Display the detection results." alt="" coords="216,71,399,112"/>
+<area shape="rect" id="node4" href="$classperception_1_1HumanTracker.html#a6fd3ada0305a2451abf70e98cc7680c4" title="Creates and configures the tracking algorithm." alt="" coords="211,136,404,177"/>
+<area shape="rect" id="node5" href="$classperception_1_1HumanTracker.html#a110afa8d5652b9eb544945666b1c4f86" title="Update the human tracking with the latest frame." alt="" coords="211,201,404,243"/>
+</map>

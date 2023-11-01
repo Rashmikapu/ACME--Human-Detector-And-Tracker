@@ -1,0 +1,15 @@
+<map id="perception::MyRobot" name="perception::MyRobot">
+<area shape="rect" id="node1" title="Class representing a robot with the capability to perform human detection and tracking." alt="" coords="387,668,594,804"/>
+<area shape="rect" id="node2" href="$classperception_1_1HumanDetector.html" title="Class for detecting humans in images using YOLO (You Only Look Once) object detection." alt="" coords="192,455,395,576"/>
+<area shape="rect" id="node3" title=" " alt="" coords="258,300,310,377"/>
+<area shape="rect" id="node4" title=" " alt="" coords="404,300,449,377"/>
+<area shape="rect" id="node5" title=" " alt="" coords="47,300,233,377"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="31,160,118,237"/>
+<area shape="rect" id="node7" title="STL class." alt="" coords="5,5,144,97"/>
+<area shape="rect" id="node8" title="STL class." alt="" coords="142,160,271,237"/>
+<area shape="rect" id="node9" title=" " alt="" coords="187,13,226,90"/>
+<area shape="rect" id="node10" title=" " alt="" coords="507,477,554,554"/>
+<area shape="rect" id="node11" href="$classperception_1_1HumanTracker.html" title="Class for tracking humans using computer vision&#45;based tracking algorithms." alt="" coords="578,462,771,569"/>
+<area shape="rect" id="node12" title=" " alt="" coords="545,300,685,377"/>
+<area shape="rect" id="node13" title=" " alt="" coords="709,300,760,377"/>
+</map>
