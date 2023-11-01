@@ -70,7 +70,7 @@ public:
    * @param indices Vector to store indices of valid detections.
    * @return Processed image with bounding boxes and labels.
    */
-  cv::Mat postProcess(cv::Mat &input, std::vector<cv::Mat> &detections,
+  cv::Mat postProcess(const cv::Mat &input, const std::vector<cv::Mat> &detections,
                       std::vector<int>* class_ids,
                       std::vector<float>* confidences,
                       std::vector<cv::Rect>* boxes, std::vector<int>* indices);

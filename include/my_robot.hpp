@@ -77,7 +77,7 @@ class MyRobot {
    * frame of reference to the robot's frame of reference. The results are stored in
    * the provided X, Y, and Z values.
    */
-  void TransformToRobotFrame(std::vector<cv::Rect> &detected_objects,double* X, double* Y, double*Z);
+  void TransformToRobotFrame(const std::vector<cv::Rect> &detected_objects,double* X, double* Y, double*Z);
 };
 }  // namespace perception
 

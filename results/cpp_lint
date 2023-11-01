@@ -4,6 +4,9 @@ Done processing ./app/human_tracker.cpp
 Done processing ./app/main.cpp
 Done processing ./app/my_robot.cpp
 Done processing ./app/visualization.cpp
+Done processing ./test/human_detector_test.cpp
+Done processing ./test/human_tracker_test.cpp
 Done processing ./test/main.cpp
-Done processing ./test/test.cpp
+Done processing ./test/my_robot_test.cpp
+Done processing ./test/visualization_test.cpp
 

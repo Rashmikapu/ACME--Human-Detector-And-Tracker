@@ -8,16 +8,16 @@
  * @copyright Copyright (c) 2023
  *
  */
-#include <../include/my_macros.hpp>
 #include <../include/visualization.hpp>
 #include <opencv2/core/types.hpp>
 #include <opencv2/opencv.hpp>
+#include <../include/my_macros.hpp>
 
 void perception::Visualization::createBoundingBox(
     std::vector<int> indices, std::vector<cv::Rect> boxes,
     std::vector<cv::Rect2d> *bboxes, cv::Mat &input_image,
     std::vector<std::string> class_list, std::vector<int> class_ids,
-    std::vector<float> confidences) {
+    const std::vector<float> confidences) {
   int id = 0;
   for (int i = 0; i < indices.size(); i++) {
     int idx = indices[i];
@@ -34,7 +34,7 @@ void perception::Visualization::createBoundingBox(
                   cv::Point(left + width, top + height), BLUE, 3 * THICKNESS);
 
     // Get the label for the class name and its confidence.
-    std::string label = cv::format("%.2f", confidences[idx]);
+    std::string label;  //= cv::format("%.2f", confidences[idx]);
 
     label = class_list[class_ids[idx]] + ":" + std::to_string(++id);
     // Draw class labels.
@@ -57,7 +57,8 @@ void perception::Visualization::createBoundingBox(
   }
 }
 
-void perception::Visualization::displayResults(cv::dnn::Net &net,cv::Mat &detector) {
+void perception::Visualization::displayResults(cv::dnn::Net &net,
+                                               cv::Mat &detector) {
   std::vector<double> layersTimes;
   double freq = cv::getTickFrequency() / 1000;
   double t = net.getPerfProfile(layersTimes) / freq;
