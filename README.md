@@ -165,13 +165,13 @@ To run the tests and generate code coverage reports:
     # Check the Generated Doc HTML by going to docs -> html -> index.html
 ```
 
-References :
-https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/
-https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python/Convert_PyTorch_models.ipynb
-https://ieeexplore.ieee.org/abstract/document/9431784?casa_token=6QG6gNyMzaAAAAAA:7UZzewC41C_CT4XgNE8sk-X07UprnCQsfflC3bfPc_IdY2SJvaOFf2aKJAp7aRToY38mUv7e6Q
-https://www.youtube.com/watch?v=BCJYorKIlN8
+### References :
+1. https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/
+2. https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python/Convert_PyTorch_models.ipynb
+3. https://ieeexplore.ieee.org/abstract/document/9431784?casa_token=6QG6gNyMzaAAAAAA:7UZzewC41C_CT4XgNE8sk-X07UprnCQsfflC3bfPc_IdY2SJvaOFf2aKJAp7aRToY38mUv7e6Q
+4. https://www.youtube.com/watch?v=BCJYorKIlN8
 
-## LICENSE
+### LICENSE
 
 This project is open source and is released under the MIT License. You are free to use, modify, and distribute the code in accordance with the terms of the MIT License.
 
